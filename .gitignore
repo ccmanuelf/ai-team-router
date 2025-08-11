@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.Python
+venv/
+env/
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Test outputs (except validation reports)
+benchmark_results_*.json
+benchmark_report_*.md
+validation_2025*.json
+validation_2025*.md
+
+# Keep the main validation report
+!VALIDATION_REPORT.md
+
+# API Keys (safety check)
+*api_key*
+*API_KEY*

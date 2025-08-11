@@ -1,0 +1,22 @@
+{
+  "web_search": {
+    "status": "failed",
+    "error": "unexpected indent (tools.py, line 1)"
+  },
+  "excel_optimizer": {
+    "status": "failed",
+    "error": "unexpected indent (tools.py, line 1)"
+  },
+  "code_executor": {
+    "status": "success",
+    "python_time": 0.014835119247436523
+  },
+  "file_analyzer": {
+    "status": "failed",
+    "error": "unexpected indent (tools.py, line 1)"
+  },
+  "model_routing": {
+    "status": "success",
+    "accuracy": 100.0
+  }
+}
