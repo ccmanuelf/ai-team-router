@@ -450,9 +450,9 @@ class AITeamRouter:
             # Intelligent timeout based on model size (prioritize quality over speed)
             model_timeout = 60  # Base timeout
             if member.memory_gb >= 8.0:  # Large models (DeepCoder, Qwen, DeepSeek)
-                model_timeout = 180  # 3 minutes for 9GB models
+                model_timeout = 300  # 5 minutes for 9GB models
             elif member.memory_gb >= 4.0:  # Medium models
-                model_timeout = 120  # 2 minutes for 4-5GB models
+                model_timeout = 180  # 3 minutes for 4-5GB models
             
             logger.info(f"Using {model_timeout}s timeout for {member.memory_gb}GB model")
             
