@@ -447,6 +447,15 @@ class AITeamRouter:
     
             self.active_member = member_id
             
+            # Intelligent timeout based on model size (prioritize quality over speed)
+            model_timeout = 60  # Base timeout
+            if member.memory_gb >= 8.0:  # Large models (DeepCoder, Qwen, DeepSeek)
+                model_timeout = 180  # 3 minutes for 9GB models
+            elif member.memory_gb >= 4.0:  # Medium models
+                model_timeout = 120  # 2 minutes for 4-5GB models
+            
+            logger.info(f"Using {model_timeout}s timeout for {member.memory_gb}GB model")
+            
             async with aiohttp.ClientSession() as session:
                 async with session.post(
                     f"{OLLAMA_API_BASE}/api/generate",
@@ -459,7 +468,7 @@ class AITeamRouter:
                             "num_ctx": min(member.context_tokens, 32768)
                         }
                     },
-                    timeout=aiohttp.ClientTimeout(total=60)
+                    timeout=aiohttp.ClientTimeout(total=model_timeout)
                 ) as response:
                     if response.status == 200:
                         result = await response.json()
