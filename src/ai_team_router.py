@@ -208,16 +208,16 @@ class AITeamRouter:
         # Base available memory minus overhead
         available = (mem.available / (1024 ** 3)) - MEMORY_OVERHEAD_GB
     
-        # M3 Pro pressure-based adjustments
+        # M3 Pro pressure-based adjustments (balanced for better routing)
         if IS_M3_PRO:
-            if mem.percent > 85:
-                available *= 0.7  # Aggressive reduction at high pressure
+            if mem.percent > 90:
+                available *= 0.8  # 20% reduction (critical only)
                 logger.warning(f"High memory pressure {mem.percent}% - reducing available to {available:.1f}GB")
-            elif mem.percent > 75:
-                available *= 0.8  # Moderate reduction
+            elif mem.percent > 85:
+                available *= 0.9  # 10% reduction (high pressure)
                 logger.info(f"Memory pressure {mem.percent}% - reducing available to {available:.1f}GB")
-            elif mem.percent > 60:
-                available *= 0.85  # Light reduction (existing logic)
+            elif mem.percent > 75:
+                available *= 0.95  # 5% reduction (moderate)
         else:
             # Non-M3 systems - simpler pressure handling
             if mem.percent > 80:
@@ -419,16 +419,12 @@ class AITeamRouter:
     def _monitor_health(self):
         """Monitor system health and prevent OOM crashes"""
         mem = psutil.virtual_memory()
-        if mem.percent > 99:
+        if mem.percent > 98:
             logger.critical(f"CRITICAL MEMORY PRESSURE: {mem.percent}%")
             if self.active_member:
                 # Emergency unload - fire and forget
                 asyncio.create_task(self._unload_model(self.team_members[self.active_member].model_id))
                 self.active_member = None
-            return "gemma_tiny", self.team_members["gemma_tiny"]
-        elif mem.percent > 95:
-            logger.warning(f"HIGH MEMORY PRESSURE: {mem.percent}%")
-            # Prefer smallest models
             return "gemma_tiny", self.team_members["gemma_tiny"]
         return None
     
