@@ -411,9 +411,9 @@ class AITeamRouter:
                         # Log timing data for future optimization
                         logger.info(f"📊 TIMING DATA: {model_id} took {elapsed:.1f}s to release {mem_released:.2f}GB")
                         
-                        # CRITICAL FIX: Memory stabilization wait
-                        logger.info("🔄 MEMORY STABILIZATION: Waiting 3s for memory visibility...")
-                        time.sleep(3)
+                        # CRITICAL FIX: Memory stabilization wait (Phase 4A proven value)
+                        logger.info("🔄 MEMORY STABILIZATION: Waiting 10s for complete memory release...")
+                        time.sleep(10)
                         
                         return True
                 
