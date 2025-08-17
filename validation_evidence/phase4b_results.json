@@ -1,0 +1,145 @@
+{
+  "timestamp": "2025-08-14T14:34:42.878929",
+  "phase": "4B_router_intelligence",
+  "routing_tests": [
+    {
+      "test_id": 1,
+      "domain": "vue_coding",
+      "complexity": 4,
+      "expected_model": "deepcoder",
+      "actual_model": "Mistral Versatile",
+      "model_id": "mistral:latest",
+      "routing_correct": false,
+      "response_time": 40.7,
+      "success": true,
+      "response_preview": " To create a user authentication component using Vue 3 and TypeScript, you can follow the steps belo"
+    },
+    {
+      "test_id": 2,
+      "domain": "excel_enterprise",
+      "complexity": 5,
+      "expected_model": "qwen",
+      "actual_model": "Granite Enterprise",
+      "model_id": "granite3.3:8b",
+      "routing_correct": false,
+      "response_time": 34.4,
+      "success": true,
+      "response_preview": "Creating a comprehensive VBA macro for an inventory management system with 150k rows is beyond the s"
+    },
+    {
+      "test_id": 3,
+      "domain": "laravel_php",
+      "complexity": 4,
+      "expected_model": "deepseek",
+      "actual_model": "Mistral Versatile",
+      "model_id": "mistral:latest",
+      "routing_correct": false,
+      "response_time": 39.8,
+      "success": true,
+      "response_preview": " To build a Laravel API with Eloquent ORM and JWT authentication, follow the steps below:\n\n1. Instal"
+    },
+    {
+      "test_id": 4,
+      "domain": "vision_analysis",
+      "complexity": 3,
+      "expected_model": "granite_vision",
+      "actual_model": "Granite Vision",
+      "model_id": "granite3.2-vision:2b",
+      "routing_correct": false,
+      "response_time": 8.6,
+      "success": true,
+      "response_preview": "\nI'm unable to directly analyze visual content like images or screenshots. However, I can certainly "
+    },
+    {
+      "test_id": 5,
+      "domain": "simple_coding",
+      "complexity": 2,
+      "expected_model": "gemma_medium",
+      "actual_model": "Mistral Versatile",
+      "model_id": "mistral:latest",
+      "routing_correct": false,
+      "response_time": 9.9,
+      "success": true,
+      "response_preview": " Here is a simple Python function that calculates the Fibonacci sequence up to a given number `n`:\n\n"
+    },
+    {
+      "test_id": 6,
+      "domain": "data_science",
+      "complexity": 4,
+      "expected_model": "qwen",
+      "actual_model": "Mistral Versatile",
+      "model_id": "mistral:latest",
+      "routing_correct": false,
+      "response_time": 13.1,
+      "success": true,
+      "response_preview": " Optimizing the processing of large datasets in a Pandas DataFrame can be achieved through several s"
+    },
+    {
+      "test_id": 7,
+      "domain": "quick_fix",
+      "complexity": 1,
+      "expected_model": "gemma_tiny",
+      "actual_model": "Mistral Versatile",
+      "model_id": "mistral:latest",
+      "routing_correct": false,
+      "response_time": 12.5,
+      "success": true,
+      "response_preview": " To add error handling to an existing function in JavaScript, you can use the `try...catch` block. H"
+    },
+    {
+      "test_id": 8,
+      "domain": "enterprise",
+      "complexity": 4,
+      "expected_model": "granite_enterprise",
+      "actual_model": "Mistral Versatile",
+      "model_id": "mistral:latest",
+      "routing_correct": false,
+      "response_time": 18.0,
+      "success": true,
+      "response_preview": " Creating a comprehensive enterprise report generation system with complex business logic involves s"
+    }
+  ],
+  "domain_tests": [
+    {
+      "prompt": "React component with hooks",
+      "expected_domain": "coding",
+      "detected_domain": "coding"
+    },
+    {
+      "prompt": "VBA Excel automation",
+      "expected_domain": "enterprise",
+      "detected_domain": "coding"
+    },
+    {
+      "prompt": "Laravel Eloquent model",
+      "expected_domain": "coding",
+      "detected_domain": "coding"
+    },
+    {
+      "prompt": "OCR from screenshot",
+      "expected_domain": "visual",
+      "detected_domain": "coding"
+    },
+    {
+      "prompt": "Pandas DataFrame analysis",
+      "expected_domain": "data",
+      "detected_domain": "coding"
+    },
+    {
+      "prompt": "Enterprise inventory report",
+      "expected_domain": "enterprise",
+      "detected_domain": "coding"
+    }
+  ],
+  "metrics": {
+    "total_tests": 8,
+    "successful_tests": 8,
+    "failed_tests": 0,
+    "success_rate": 100.0,
+    "routing_accuracy": 0.0,
+    "correct_routing": 0,
+    "average_response_time": 22.125,
+    "min_response_time": 8.6,
+    "max_response_time": 40.7
+  }
+}

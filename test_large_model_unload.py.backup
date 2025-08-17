@@ -1,0 +1,237 @@
+#!/usr/bin/env python3
+"""
+Large Model Unload Test - Test 10s timeout with premium 9GB models
+"""
+
+import asyncio
+import json
+import logging
+import time
+import sys
+import os
+
+# Add src directory to path
+src_path = '/Users/mcampos.cerda/Documents/Programming/ai-team-router/src'
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
+
+try:
+    from ai_team_router import AITeamRouter
+except ImportError as e:
+    print(f"Import error: {e}")
+    sys.exit(1)
+
+import psutil
+
+# Enhanced logging for large model testing
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - LARGE_MODEL_TEST - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("/Users/mcampos.cerda/Documents/Programming/ai-team-router/logs/large_model_unload_test.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+async def test_large_model_unloading():
+    """Test 10-second timeout with premium 9GB models"""
+    
+    print("🏆 LARGE MODEL UNLOAD TEST - Premium Quality Models")
+    print("=" * 70)
+    print("🎯 GOAL: Validate 10s timeout with high-quality 9GB models")
+    print("🚀 PHILOSOPHY: Quality over speed - 1 token/sec acceptable")
+    print("=" * 70)
+    
+    router = AITeamRouter()
+    
+    # Test premium models - the ones we really want to work
+    premium_models = [
+        ("deepcoder_primary", "deepcoder:latest", 9.0, "VueJS/React/Python expert"),
+        ("qwen_analyst", "qwen2.5:14b", 9.0, "Excel/VBA/Pandas specialist"),
+        ("deepseek_legacy", "deepseek-coder-v2:16b", 8.9, "Laravel/PHP expert"),
+    ]
+    
+    results = []
+    
+    for member_id, model_id, expected_memory, description in premium_models:
+        print(f"\n🏆 Testing PREMIUM: {member_id}")
+        print(f"   📋 Model: {model_id}")
+        print(f"   💎 Purpose: {description}")
+        print(f"   📊 Expected Memory: {expected_memory}GB")
+        
+        # Check initial memory state
+        initial_mem = psutil.virtual_memory()
+        initial_available = initial_mem.available / (1024**3)
+        
+        print(f"   📊 System Memory: {initial_available:.2f}GB available ({initial_mem.percent:.1f}% used)")
+        
+        # Memory requirement check
+        memory_needed = expected_memory + 0.5  # Model + overhead
+        
+        if initial_available < memory_needed:
+            print(f"   ⚠️  INSUFFICIENT MEMORY:")
+            print(f"      Need: {memory_needed:.1f}GB")
+            print(f"      Have: {initial_available:.1f}GB")
+            print(f"      Deficit: {memory_needed - initial_available:.1f}GB")
+            
+            # Check if edge mode could work
+            if initial_available + 4.0 >= memory_needed:  # 4GB edge allowance
+                print(f"   🔥 EDGE MODE: Might work with {memory_needed - initial_available:.1f}GB deficit")
+                print(f"      Proceeding with test (expect slow performance)...")
+            else:
+                print(f"   🛑 SKIP: Even edge mode insufficient")
+                continue
+        else:
+            print(f"   ✅ SUFFICIENT MEMORY: {initial_available:.1f}GB >= {memory_needed:.1f}GB")
+        
+        try:
+            print(f"   🔄 Loading {model_id}...")
+            load_start = time.time()
+            
+            # Simple request to trigger model loading
+            response = await router.route_request(
+                prompt="Respond with just 'LOADED' to confirm you're working",
+                context={"temperature": 0.1}
+            )
+            
+            load_time = time.time() - load_start
+            
+            # Check memory after loading
+            loaded_mem = psutil.virtual_memory()
+            loaded_available = loaded_mem.available / (1024**3)
+            memory_consumed = initial_available - loaded_available
+            
+            print(f"   ⏱️  Load Time: {load_time:.1f}s")
+            print(f"   💾 Memory Consumed: {memory_consumed:.2f}GB")
+            print(f"   📊 After Load: {loaded_available:.2f}GB available ({loaded_mem.percent:.1f}% used)")
+            
+            # Check if we got a valid response
+            response_text = response.get("response", "")
+            if "LOADED" in response_text or len(response_text) > 5:
+                print(f"   ✅ Model Response: Working (got: '{response_text[:50]}...')")
+                model_working = True
+            else:
+                print(f"   ❌ Model Response: Failed (got: '{response_text}')")
+                model_working = False
+            
+            # Now test the critical part: UNLOADING with 10s timeout
+            print(f"   🔄 Testing 10-second unload timeout...")
+            print(f"   ⏱️  Monitoring memory release every 0.5s for up to 10s...")
+            
+            unload_start = time.time()
+            
+            # This will use our new 10-second timeout mechanism
+            unload_success = await router._unload_model(model_id)
+            
+            unload_time = time.time() - unload_start
+            
+            # Check final memory state
+            final_mem = psutil.virtual_memory()
+            final_available = final_mem.available / (1024**3)
+            memory_released = final_available - loaded_available
+            
+            result = {
+                "model": member_id,
+                "model_id": model_id,
+                "description": description,
+                "expected_memory_gb": expected_memory,
+                "initial_available_gb": initial_available,
+                "memory_consumed_gb": memory_consumed,
+                "load_time_s": load_time,
+                "model_working": model_working,
+                "unload_time_s": unload_time,
+                "unload_success": unload_success,
+                "memory_released_gb": memory_released,
+                "final_available_gb": final_available,
+                "memory_efficiency": memory_released / memory_consumed if memory_consumed > 0 else 0
+            }
+            
+            results.append(result)
+            
+            # Results summary
+            print(f"   🏁 UNLOAD RESULTS:")
+            print(f"      ⏱️  Time: {unload_time:.1f}s")
+            print(f"      ✅ Success: {unload_success}")
+            print(f"      💾 Released: {memory_released:.2f}GB / {memory_consumed:.2f}GB consumed")
+            print(f"      📊 Efficiency: {(memory_released/memory_consumed)*100 if memory_consumed > 0 else 0:.1f}%")
+            print(f"      📊 Final: {final_available:.2f}GB available ({final_mem.percent:.1f}% used)")
+            
+            if unload_success and memory_released >= 0.5:
+                print(f"   🎉 SUCCESS: 10s timeout works for {member_id}!")
+            elif unload_success:
+                print(f"   ⚠️  PARTIAL: Unload completed but minimal memory released")
+            else:
+                print(f"   ❌ FAILED: 10s timeout insufficient for {member_id}")
+            
+            # Wait between tests to let system stabilize
+            print(f"   ⏸️  Cooling down for 5 seconds...")
+            await asyncio.sleep(5)
+            
+        except Exception as e:
+            print(f"   ❌ ERROR during test: {e}")
+            # Try emergency unload
+            try:
+                await router._unload_model(model_id)
+            except:
+                pass
+            continue
+    
+    # Generate comprehensive report
+    print("\n" + "=" * 70)
+    print("📊 LARGE MODEL UNLOAD ANALYSIS")
+    print("=" * 70)
+    
+    if not results:
+        print("❌ NO SUCCESSFUL TESTS")
+        print("💡 RECOMMENDATION: Free more system memory and retry")
+        return
+    
+    # Save detailed results
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    report_file = f"/Users/mcampos.cerda/Documents/Programming/ai-team-router/validation_evidence/large_model_unload_{timestamp}.json"
+    
+    with open(report_file, 'w') as f:
+        json.dump({
+            "timestamp": timestamp,
+            "test_type": "large_model_unload_validation",
+            "timeout_tested": "10_seconds",
+            "philosophy": "quality_over_speed",
+            "system_info": {
+                "platform": "M3 Pro",
+                "total_memory_gb": psutil.virtual_memory().total / (1024**3)
+            },
+            "results": results
+        }, f, indent=2)
+    
+    # Analysis
+    successful_tests = [r for r in results if r["unload_success"]]
+    failed_tests = [r for r in results if not r["unload_success"]]
+    
+    print(f"✅ Successful unloads: {len(successful_tests)}/{len(results)}")
+    
+    if successful_tests:
+        avg_unload_time = sum(r["unload_time_s"] for r in successful_tests) / len(successful_tests)
+        max_unload_time = max(r["unload_time_s"] for r in successful_tests)
+        avg_memory_released = sum(r["memory_released_gb"] for r in successful_tests) / len(successful_tests)
+        
+        print(f"⏱️  Average unload time: {avg_unload_time:.1f}s")
+        print(f"⏱️  Maximum unload time: {max_unload_time:.1f}s")
+        print(f"💾 Average memory released: {avg_memory_released:.2f}GB")
+        
+        if max_unload_time <= 10.0:
+            print(f"🎉 VERDICT: 10-second timeout is SUFFICIENT for large models!")
+        else:
+            print(f"⚠️  VERDICT: 10-second timeout may be insufficient")
+            print(f"💡 RECOMMENDATION: Consider increasing to {max_unload_time + 2:.0f} seconds")
+    
+    if failed_tests:
+        print(f"❌ Failed models: {[r['model'] for r in failed_tests]}")
+        print(f"💡 RECOMMENDATION: Try 25-second timeout for failed models")
+    
+    print(f"\n📁 Detailed results: {report_file}")
+    print(f"📁 Live logs: /Users/mcampos.cerda/Documents/Programming/ai-team-router/logs/large_model_unload_test.log")
+
+if __name__ == "__main__":
+    print("🚀 Starting large model unload validation...")
+    asyncio.run(test_large_model_unloading())

@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-08-16T11:57:11.194958",
+  "step": 1,
+  "unload_analysis": {
+    "timeout_seconds": 10.0,
+    "target_release_gb": 0.5,
+    "check_interval_seconds": 0.5,
+    "function_length": 77
+  },
+  "route_analysis": {
+    "has_unload_check": true,
+    "has_unload_call": true,
+    "unload_in_else_block": false,
+    "unload_line_position": -1
+  },
+  "memory_timeout_working": true,
+  "single_model_enforcement_working": true,
+  "critical_issue": false
+}

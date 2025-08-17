@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-08-16T12:24:34.474227",
+  "step": 1,
+  "test_type": "routing_accuracy_after_fix",
+  "accuracy": 0.0,
+  "correct_routes": 0,
+  "total_routes": 2,
+  "results": [
+    {
+      "test": "Vue.js",
+      "model_used": "failed",
+      "model_id": "failed",
+      "correct": false
+    },
+    {
+      "test": "Excel VBA",
+      "model_used": "failed",
+      "model_id": "failed",
+      "correct": false
+    }
+  ]
+}

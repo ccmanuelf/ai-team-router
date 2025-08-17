@@ -1,0 +1,46 @@
+{
+  "timestamp": "20250813_163341",
+  "test_type": "unload_timing_analysis",
+  "system_info": {
+    "platform": "M3 Pro",
+    "total_memory_gb": 18.0
+  },
+  "results": [
+    {
+      "model": "gemma_tiny",
+      "model_id": "gemma3:1b",
+      "expected_memory_gb": 0.8,
+      "load_time_s": 3.0979058742523193,
+      "unload_time_s": 2.0181312561035156,
+      "memory_used_gb": 3.5611572265625,
+      "memory_released_gb": 0.59405517578125,
+      "unload_success": true,
+      "final_available_gb": 2.5353851318359375,
+      "final_memory_percent": 85.9
+    },
+    {
+      "model": "granite_vision",
+      "model_id": "granite3.2-vision:2b",
+      "expected_memory_gb": 2.4,
+      "load_time_s": 0.22935199737548828,
+      "unload_time_s": 2.009575843811035,
+      "memory_used_gb": 2.2596435546875,
+      "memory_released_gb": 0.615081787109375,
+      "unload_success": true,
+      "final_available_gb": 2.5824737548828125,
+      "final_memory_percent": 85.7
+    },
+    {
+      "model": "granite_moe",
+      "model_id": "granite3.1-moe:3b",
+      "expected_memory_gb": 2.0,
+      "load_time_s": 0.24510908126831055,
+      "unload_time_s": 5.02497410774231,
+      "memory_used_gb": 0.945556640625,
+      "memory_released_gb": 0.5057525634765625,
+      "unload_success": true,
+      "final_available_gb": 2.5512542724609375,
+      "final_memory_percent": 85.8
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-08-16T15:39:11.717846",
+  "phase": "4A",
+  "test_type": "routing_accuracy_validation",
+  "total_tests": 4,
+  "successful_tests": 3,
+  "correct_routing": 2,
+  "success_rate": 75.0,
+  "routing_accuracy": 50.0,
+  "baseline_accuracy": 40,
+  "improvement": 10.0,
+  "target_accuracy": 70,
+  "phase_passed": false,
+  "results": [
+    {
+      "test": "Vue.js Component",
+      "success": false,
+      "error": "",
+      "routing_correct": false
+    },
+    {
+      "test": "Excel VBA",
+      "category": "data",
+      "success": true,
+      "model_used": "Gemma Tiny",
+      "model_id": "gemma3:1b",
+      "expected_model": "Qwen",
+      "routing_correct": false,
+      "response_time": 18.966731786727905,
+      "response_preview": "```vba\nSub ProcessData()\n\n  ' This macro processes a dataset of 150,000 rows in Excel.\n  ' It demons..."
+    },
+    {
+      "test": "Laravel API",
+      "category": "backend",
+      "success": true,
+      "model_used": "DeepSeek Legacy",
+      "model_id": "deepseek-coder-v2:16b",
+      "expected_model": "DeepSeek",
+      "routing_correct": true,
+      "response_time": 142.36458921432495,
+      "response_preview": " Sure! Below is an example of how to create a simple Laravel API endpoint with validation. This exam..."
+    },
+    {
+      "test": "Simple Task",
+      "category": "simple",
+      "success": true,
+      "model_used": "Mistral Versatile",
+      "model_id": "mistral:latest",
+      "expected_model": "Any",
+      "routing_correct": true,
+      "response_time": 9.237518787384033,
+      "response_preview": " Hello! How can I help you today?\n\nI am here to answer questions, provide information, and engage in..."
+    }
+  ]
+}

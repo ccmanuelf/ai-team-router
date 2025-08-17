@@ -1,0 +1,46 @@
+{
+  "mcpServers": {
+    "ai-team-router": {
+      "command": "python3",
+      "args": [
+        "/Users/mcampos.cerda/Documents/Programming/ai/mcp_server.py"
+      ],
+      "env": {
+        "OLLAMA_API_BASE": "http://localhost:11434",
+        "ROUTER_PORT": "11435"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/mcampos.cerda/Documents/Programming"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_TOKEN_HERE"
+      }
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "web-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-websearch"
+      ]
+    }
+  }
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "success": false,
+    "error": "'model'",
+    "test_id": 1,
+    "category": "simple_coding",
+    "expected_model": "mistral_versatile"
+  },
+  {
+    "prompt": "Create a Vue 3 component with reactive data and co...",
+    "response_time": 26.41,
+    "model_used": "mistral:latest",
+    "model_name": "Mistral Versatile",
+    "expected_model": "deepcoder_primary",
+    "routing_correct": false,
+    "response_length": 2054,
+    "memory_start": 89.8,
+    "memory_end": 55.5,
+    "success": true,
+    "timestamp": "2025-08-12T13:42:11.401740",
+    "test_id": 2,
+    "category": "vue_coding"
+  },
+  {
+    "success": false,
+    "error": "'model'",
+    "test_id": 3,
+    "category": "excel_vba",
+    "expected_model": "qwen_analyst"
+  },
+  {
+    "prompt": "Build a Laravel API endpoint with validation and a...",
+    "response_time": 48.15,
+    "model_used": "mistral:latest",
+    "model_name": "Mistral Versatile",
+    "expected_model": "deepseek_legacy",
+    "routing_correct": false,
+    "response_length": 4321,
+    "memory_start": 93.0,
+    "memory_end": 55.8,
+    "success": true,
+    "timestamp": "2025-08-12T13:44:06.090262",
+    "test_id": 4,
+    "category": "laravel_php"
+  },
+  {
+    "prompt": "Analyze this screenshot for UI elements and layout...",
+    "response_time": 4.25,
+    "model_used": "granite3.2-vision:2b",
+    "model_name": "Granite Vision",
+    "expected_model": "granite_vision",
+    "routing_correct": false,
+    "response_length": 243,
+    "memory_start": 54.3,
+    "memory_end": 48.1,
+    "success": true,
+    "timestamp": "2025-08-12T13:44:12.342129",
+    "test_id": 5,
+    "category": "vision"
+  },
+  {
+    "success": false,
+    "error": "'model'",
+    "test_id": 6,
+    "category": "complex_vue",
+    "expected_model": "deepcoder_primary"
+  },
+  {
+    "prompt": "Create a comprehensive Laravel application with us...",
+    "response_time": 40.74,
+    "model_used": "gemma3:4b",
+    "model_name": "Gemma Medium",
+    "expected_model": "deepseek_legacy",
+    "routing_correct": false,
+    "response_length": 5841,
+    "memory_start": 95.0,
+    "memory_end": 58.9,
+    "success": true,
+    "timestamp": "2025-08-12T13:45:59.618507",
+    "test_id": 7,
+    "category": "complex_laravel"
+  }
+]

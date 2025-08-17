@@ -1,0 +1,42 @@
+{
+  "timestamp": "20250813_164843",
+  "test_type": "large_model_unload_validation",
+  "timeout_tested": "10_seconds",
+  "philosophy": "quality_over_speed",
+  "system_info": {
+    "platform": "M3 Pro",
+    "total_memory_gb": 18.0
+  },
+  "results": [
+    {
+      "model": "deepcoder_primary",
+      "model_id": "deepcoder:latest",
+      "description": "VueJS/React/Python expert",
+      "expected_memory_gb": 9.0,
+      "initial_available_gb": 5.5129241943359375,
+      "memory_consumed_gb": 3.3053131103515625,
+      "load_time_s": 2.2225048542022705,
+      "model_working": true,
+      "unload_time_s": 2.0099451541900635,
+      "unload_success": true,
+      "memory_released_gb": 2.7084808349609375,
+      "final_available_gb": 4.9160919189453125,
+      "memory_efficiency": 0.8194324545164968
+    },
+    {
+      "model": "qwen_analyst",
+      "model_id": "qwen2.5:14b",
+      "description": "Excel/VBA/Pandas specialist",
+      "expected_memory_gb": 9.0,
+      "initial_available_gb": 6.0778656005859375,
+      "memory_consumed_gb": 3.0550384521484375,
+      "load_time_s": 0.30213284492492676,
+      "model_working": true,
+      "unload_time_s": 2.007969856262207,
+      "unload_success": true,
+      "memory_released_gb": 0.58612060546875,
+      "final_available_gb": 3.60894775390625,
+      "memory_efficiency": 0.19185375721099818
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-08-16T20:52:18.505513",
+  "test_type": "router_model_switching",
+  "baseline_memory": {
+    "timestamp": 1755394752.814383,
+    "datetime": "2025-08-16T20:39:12.814393",
+    "total_gb": 18.0,
+    "available_gb": 6.675933837890625,
+    "used_gb": 8.3135986328125,
+    "percent_used": 62.9,
+    "free_gb": 0.138885498046875,
+    "cached_gb": 0.0,
+    "buffers_gb": 0.0
+  },
+  "test_cases": [
+    {
+      "name": "Vue.js Task",
+      "prompt": "Create a Vue.js component with reactive data binding",
+      "expected_model": "DeepCoder",
+      "expected_size_gb": 9.0
+    },
+    {
+      "name": "Excel VBA Task",
+      "prompt": "Generate VBA code to process 150000 rows in Excel",
+      "expected_model": "Qwen",
+      "expected_size_gb": 9.0
+    },
+    {
+      "name": "Laravel Task",
+      "prompt": "Create a Laravel API endpoint with validation",
+      "expected_model": "DeepSeek",
+      "expected_size_gb": 8.9
+    }
+  ],
+  "results": [
+    {
+      "test_case": "Vue.js Task",
+      "success": false,
+      "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=300)",
+      "memory_before_gb": 6.6760101318359375,
+      "memory_after_gb": 1.298919677734375,
+      "memory_change_gb": -5.3770904541015625,
+      "routing_correct": false
+    },
+    {
+      "test_case": "Excel VBA Task",
+      "success": false,
+      "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=300)",
+      "memory_before_gb": 6.9306640625,
+      "memory_after_gb": 1.687286376953125,
+      "memory_change_gb": -5.243377685546875,
+      "routing_correct": false
+    },
+    {
+      "test_case": "Laravel Task",
+      "success": true,
+      "model_used": "DeepSeek Legacy",
+      "model_id": "deepseek-coder-v2:16b",
+      "response_time": 125.12553811073303,
+      "memory_before_gb": 6.5140380859375,
+      "memory_after_gb": 0.91973876953125,
+      "memory_change_gb": -5.59429931640625,
+      "routing_correct": true
+    }
+  ],
+  "summary": {
+    "total_tests": 3,
+    "successful_tests": 1,
+    "success_rate": 0.3333333333333333,
+    "correct_routing": 1,
+    "routing_accuracy": 0.3333333333333333
+  }
+}

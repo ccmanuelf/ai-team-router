@@ -1,0 +1,18 @@
+[
+  {
+    "category": "simple",
+    "error": "",
+    "success": false
+  },
+  {
+    "category": "vue",
+    "time": 38.4,
+    "model": "Gemma Medium",
+    "success": true
+  },
+  {
+    "category": "excel",
+    "error": "",
+    "success": false
+  }
+]

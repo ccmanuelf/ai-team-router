@@ -1,0 +1,52 @@
+[
+  {
+    "category": "simple_coding",
+    "success": true,
+    "response_time": 10.3,
+    "model_used": "Mistral Versatile",
+    "expected_model": "mistral",
+    "routing_correct": true,
+    "response_length": 909,
+    "response_preview": " Here's a simple Python function that sorts a list of dictionaries by a specific key. In this case, ..."
+  },
+  {
+    "category": "vue_coding",
+    "success": true,
+    "response_time": 13.2,
+    "model_used": "Mistral Versatile",
+    "expected_model": "deepcoder",
+    "routing_correct": false,
+    "response_length": 1207,
+    "response_preview": " To create a Vue 3 component with reactive data and computed properties, you'll need to set up the c..."
+  },
+  {
+    "category": "excel_vba",
+    "success": true,
+    "response_time": 34.9,
+    "model_used": "Granite Enterprise",
+    "expected_model": "qwen",
+    "routing_correct": false,
+    "response_length": 2781,
+    "response_preview": "Creating VBA code for an entire inventory reconciliation process with 150,000 rows is beyond the sco..."
+  },
+  {
+    "category": "laravel_php",
+    "success": true,
+    "response_time": 28.0,
+    "model_used": "Mistral Versatile",
+    "expected_model": "deepseek",
+    "routing_correct": false,
+    "response_length": 2263,
+    "response_preview": " To build a Laravel API endpoint with validation and authentication, follow these steps:\n\n1. Install..."
+  },
+  {
+    "category": "vision",
+    "success": true,
+    "response_time": 3.7,
+    "model_used": "Granite Vision",
+    "expected_model": "granite",
+    "routing_correct": true,
+    "response_length": 454,
+    "response_preview": "\nI'm sorry; however, without seeing your screenshot in question here at hand! Could you please provi..."
+  }
+]

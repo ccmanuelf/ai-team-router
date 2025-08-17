@@ -1,0 +1,116 @@
+{
+  "assistant": {
+    "version": "2",
+    "default_model": {
+      "provider": "ollama",
+      "model": "deepcoder:latest"
+    },
+    "models": {
+      "ollama": {
+        "api_url": "http://localhost:11434",
+        "low_speed_timeout_in_seconds": 600,
+        "available_models": [
+          {
+            "provider": "ollama",
+            "name": "deepcoder:latest",
+            "display_name": "DeepCoder Prime",
+            "max_tokens": 32768,
+            "context_window": 32768
+          },
+          {
+            "provider": "ollama",
+            "name": "qwen2.5:14b",
+            "display_name": "Qwen Data Master",
+            "max_tokens": 32768,
+            "context_window": 32768
+          },
+          {
+            "provider": "ollama",
+            "name": "deepseek-coder-v2:16b",
+            "display_name": "DeepSeek Legacy",
+            "max_tokens": 128000,
+            "context_window": 128000
+          },
+          {
+            "provider": "ollama",
+            "name": "granite3.2-vision:2b",
+            "display_name": "Granite Vision",
+            "max_tokens": 4096,
+            "context_window": 4096
+          },
+          {
+            "provider": "ollama",
+            "name": "mistral:latest",
+            "display_name": "Mistral Versatile",
+            "max_tokens": 8192,
+            "context_window": 8192
+          }
+        ]
+      },
+      "custom": {
+        "ai-team-router": {
+          "api_url": "http://localhost:11435",
+          "display_name": "AI Team Router",
+          "description": "Intelligent routing to best model",
+          "max_tokens": 32768
+        }
+      }
+    }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "features": {
+    "inline_completions": true
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "buffer_font_size": 14,
+  "buffer_font_family": "JetBrains Mono",
+  "project_panel": {
+    "dock": "left",
+    "default_width": 240
+  },
+  "tabs": {
+    "close_position": "right",
+    "file_icons": true,
+    "git_status": true
+  },
+  "languages": {
+    "Vue": {
+      "language_servers": ["volar", "eslint"],
+      "format_on_save": true,
+      "formatter": "prettier"
+    },
+    "JavaScript": {
+      "language_servers": ["typescript-language-server", "eslint"],
+      "format_on_save": true
+    },
+    "TypeScript": {
+      "language_servers": ["typescript-language-server", "eslint"],
+      "format_on_save": true
+    },
+    "PHP": {
+      "language_servers": ["intelephense"],
+      "format_on_save": true
+    },
+    "Python": {
+      "language_servers": ["pylsp"],
+      "format_on_save": true,
+      "formatter": "black"
+    }
+  },
+  "terminal": {
+    "font_size": 13,
+    "font_family": "JetBrains Mono"
+  },
+  "vim_mode": false,
+  "autosave": "on_focus_change",
+  "format_on_save": true,
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true
+}
