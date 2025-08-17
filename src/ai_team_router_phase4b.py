@@ -540,7 +540,11 @@ class AITeamRouter:
                         return member_id, member
                     else:
                         memory_deficit = required_memory - available_memory
-                        if MEMORY_EDGE_MODE and memory_deficit < MEMORY_EDGE_LIMIT_GB:  # Allow up to 4GB over-edge
+                        # AGGRESSIVE EDGE MODE: Allow larger deficits for BEST models only
+                        if group_name == "BEST" and memory_deficit < 6.0:  # Up to 6GB deficit for best models
+                            logger.warning(f"AGGRESSIVE EDGE: Selected {member_id} with {memory_deficit:.1f}GB deficit for optimal routing")
+                            return member_id, member
+                        elif MEMORY_EDGE_MODE and memory_deficit < MEMORY_EDGE_LIMIT_GB:
                             logger.warning(f"EDGE MODE: Selected {member_id} with {memory_deficit:.1f}GB deficit - expect 1-3 tokens/sec")
                             return member_id, member
                         else:
