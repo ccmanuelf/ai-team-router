@@ -410,6 +410,11 @@ class AITeamRouter:
                         
                         # Log timing data for future optimization
                         logger.info(f"📊 TIMING DATA: {model_id} took {elapsed:.1f}s to release {mem_released:.2f}GB")
+                        
+                        # CRITICAL FIX: Memory stabilization wait
+                        logger.info("🔄 MEMORY STABILIZATION: Waiting 3s for memory visibility...")
+                        time.sleep(3)
+                        
                         return True
                 
                 # If we reach here, unload was insufficient - try force reset
@@ -521,6 +526,8 @@ class AITeamRouter:
                     return ["deepcoder_primary", "deepseek_legacy"], ["mistral_versatile", "gemma_medium"], ["gemma_tiny"]
             elif domain == "enterprise":
                 return ["qwen_analyst"], ["granite_enterprise", "mistral_versatile", "gemma_medium"], ["gemma_tiny"]
+            elif domain == "data": 
+                return ["qwen_analyst"], ["deepcoder_primary", "mistral_versatile"], ["gemma_tiny"]
             elif domain == "visual":
                 return ["granite_vision"], ["gemma_medium"], ["gemma_tiny"]
             else:
@@ -541,7 +548,9 @@ class AITeamRouter:
                     else:
                         memory_deficit = required_memory - available_memory
                         # AGGRESSIVE EDGE MODE: Allow larger deficits for BEST models only
-                        if group_name == "BEST" and memory_deficit < 6.0:  # Up to 6GB deficit for best models
+                        # Special priority for Vue/React tasks to get DeepCoder
+                        is_react_vue = "react" in requirements.get("prompt", "").lower() or "vue" in requirements.get("prompt", "").lower()
+                        if (group_name == "BEST" and memory_deficit < 6.0) or (is_react_vue and member_id == "deepcoder_primary" and memory_deficit < 8.0):
                             logger.warning(f"AGGRESSIVE EDGE: Selected {member_id} with {memory_deficit:.1f}GB deficit for optimal routing")
                             return member_id, member
                         elif MEMORY_EDGE_MODE and memory_deficit < MEMORY_EDGE_LIMIT_GB:
