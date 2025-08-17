@@ -386,7 +386,7 @@ class AITeamRouter:
                 else:
                     return ["deepcoder_primary", "deepseek_legacy"], ["mistral_versatile", "gemma_medium"], ["gemma_tiny"]
             elif domain == "enterprise":
-                return ["qwen_analyst"], ["granite_enterprise", "mistral_versatile"], ["gemma_tiny"]
+                return ["qwen_analyst"], ["granite_enterprise", "mistral_versatile", "gemma_medium"], ["gemma_tiny"]
             elif domain == "visual":
                 return ["granite_vision"], ["gemma_medium"], ["gemma_tiny"]
             else:
