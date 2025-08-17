@@ -421,7 +421,7 @@ class AITeamRouter:
                 
                 # Force context reset as last resort
                 logger.info("🔄 Attempting force context reset...")
-                await self._force_context_reset(model_id)
+                self._force_context_reset(model_id)
                 
                 # Final verification
                 time.sleep(2)
@@ -556,8 +556,8 @@ class AITeamRouter:
         if mem.percent > 98:
             logger.critical(f"CRITICAL MEMORY PRESSURE: {mem.percent}%")
             if self.active_member:
-                # Emergency unload - fire and forget
-                asyncio.create_task(self._unload_model(self.team_members[self.active_member].model_id))
+                # Emergency unload - synchronous in Phase 4B
+                self._unload_model(self.team_members[self.active_member].model_id)
                 self.active_member = None
             return "gemma_tiny", self.team_members["gemma_tiny"]
         return None
