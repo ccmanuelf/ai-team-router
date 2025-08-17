@@ -581,14 +581,14 @@ class AITeamRouter:
 
             self.active_member = member_id
             
-            # PHASE 4B: Intelligent timeout based on model size (validated values)
+            # PHASE 4B: Intelligent timeout based on model size (Phase 4A proven values)
             model_timeout = 60  # Base timeout
             if member.memory_gb >= 8.0:  # Large models (DeepCoder, Qwen, DeepSeek)
-                model_timeout = 720  # 12 minutes for 9GB models (Phase 4A validated)
+                model_timeout = 300  # 5 minutes - Phase 4A proven successful
             elif member.memory_gb >= 4.0:  # Medium models
-                model_timeout = 360  # 6 minutes for 4-5GB models (Phase 4A validated)
+                model_timeout = 240  # 4 minutes for medium models
             else:
-                model_timeout = 180  # 3 minutes for small models (Phase 4A validated)
+                model_timeout = 180  # 3 minutes for small models
             
             logger.info(f"Using {model_timeout}s timeout for {member.memory_gb}GB model")
             
@@ -599,7 +599,7 @@ class AITeamRouter:
                 timeout=model_timeout,
                 options={
                     "temperature": context.get("temperature", 0.7),
-                    "num_ctx": min(member.context_tokens, 32768)
+                    "num_ctx": 2048  # Phase 4A proven value - was 32768 (too large!)
                 }
             )
             
