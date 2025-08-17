@@ -618,6 +618,12 @@ class AITeamRouter:
             
             if result["success"]:
                 elapsed = time.time() - start_time
+                
+                # CRITICAL FIX: Unload model after each request to free memory for next request
+                logger.info(f"🧹 REQUEST COMPLETE: Unloading {member.model_id} to free memory for next request")
+                self._unload_model(member.model_id)
+                self.active_member = None
+                
                 return {
                     "response": result["response"],
                     "metadata": {
