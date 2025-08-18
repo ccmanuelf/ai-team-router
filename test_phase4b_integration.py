@@ -263,7 +263,7 @@ def test_phase4b_integration():
                 "http_clients_used": list(http_clients),
                 "phases_detected": list(phases),
                 "detailed_results": results
-            }, indent=2)
+            }, f, indent=2)
         
         print(f"📁 Results saved to: {results_file}")
         return True, routing_accuracy
