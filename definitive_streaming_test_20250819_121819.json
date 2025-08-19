@@ -1,0 +1,26 @@
+{
+  "non_stream_300s": {
+    "success": true,
+    "method": "non_streaming",
+    "timeout_limit": 300,
+    "actual_time": 232.78144884109497,
+    "response_length": 12862,
+    "timed_out": false
+  },
+  "non_stream_600s": {
+    "success": true,
+    "method": "non_streaming",
+    "timeout_limit": 600,
+    "actual_time": 534.3209881782532,
+    "response_length": 13034,
+    "timed_out": false
+  },
+  "streaming_60s": {
+    "success": false,
+    "method": "streaming",
+    "actual_time": 179.4066128730774,
+    "timeout_type": "no_token",
+    "chunks_received": 1090,
+    "response_length": 4759
+  }
+}
