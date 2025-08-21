@@ -34,3 +34,12 @@ validation_2025*.md
 # API Keys (safety check)
 *api_key*
 *API_KEY*
+
+# API Keys and Sensitive Data
+.env
+*.key
+*api_key*
+validation_evidence/*validation*.json
+temp_script.sh
+*_backup.py
+
