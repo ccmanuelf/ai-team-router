@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-08-18T09:09:31.228715",
+  "test_type": "phase4b_router_validation_corrected",
+  "router_version": "ai_team_router_phase4b.py",
+  "baseline_memory_gb": 7.63958740234375,
+  "tests_executed": 3,
+  "total_tests": 3,
+  "memory_recoveries": 3,
+  "success_rate": 100.0,
+  "memory_recovery_rate": 100.0,
+  "overall_success": true,
+  "detailed_results": [
+    {
+      "test": "Vue.js Component",
+      "success": true,
+      "model": "deepcoder:latest",
+      "time": 157.8086998462677,
+      "baseline_memory": 7.63958740234375,
+      "final_memory": 9.622344970703125,
+      "memory_recovered": true
+    },
+    {
+      "test": "Excel Processing",
+      "success": true,
+      "model": "qwen2.5:14b",
+      "time": 85.52990198135376,
+      "baseline_memory": 7.63958740234375,
+      "final_memory": 9.917648315429688,
+      "memory_recovered": true
+    },
+    {
+      "test": "Simple Math",
+      "success": true,
+      "model": "deepcoder:latest",
+      "time": 26.63750910758972,
+      "baseline_memory": 7.63958740234375,
+      "final_memory": 9.413894653320312,
+      "memory_recovered": true
+    }
+  ],
+  "conclusion": "Phase 4B router properly loads and unloads models"
+}

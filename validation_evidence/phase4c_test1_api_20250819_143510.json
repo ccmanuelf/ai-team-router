@@ -1,0 +1,104 @@
+{
+  "timestamp": "2025-08-19T14:35:10.928068",
+  "test_type": "api_endpoint_validation",
+  "phase": "4C",
+  "test_number": 1,
+  "passed_tests": 5,
+  "total_tests": 5,
+  "success_rate": 100.0,
+  "overall_success": true,
+  "detailed_results": {
+    "router_startup": {
+      "success": true,
+      "data": {
+        "status": "started",
+        "startup_time": 2,
+        "pid": 16435
+      }
+    },
+    "api_endpoints": {
+      "success": true,
+      "data": {
+        "/health": {
+          "success": true,
+          "status": 200,
+          "data_size": 117
+        },
+        "/api/team/status": {
+          "success": true,
+          "status": 200,
+          "data_size": 248
+        },
+        "/api/team/members": {
+          "success": true,
+          "status": 200,
+          "data_size": 2836
+        },
+        "/": {
+          "success": true,
+          "status": 200,
+          "data_size": 295
+        }
+      }
+    },
+    "chat_functionality": {
+      "success": true,
+      "data": {
+        "Simple Math": {
+          "success": true,
+          "model_used": "deepcoder:latest",
+          "member_name": "DeepCoder Prime",
+          "response_time": 39.3315110206604,
+          "response_length": 383,
+          "has_response": true
+        },
+        "Vue.js Question": {
+          "success": true,
+          "model_used": "deepcoder:latest",
+          "member_name": "DeepCoder Prime",
+          "response_time": 92.00616788864136,
+          "response_length": 4869,
+          "has_response": true
+        },
+        "Excel Question": {
+          "success": true,
+          "model_used": "qwen2.5:14b",
+          "member_name": "Qwen Data Master",
+          "response_time": 66.83322501182556,
+          "response_length": 3323,
+          "has_response": true
+        }
+      }
+    },
+    "team_status": {
+      "success": true,
+      "data": {
+        "team_size": 11,
+        "total_memory_gb": 18.0,
+        "available_memory_gb": 7.5363922119140625,
+        "has_all_fields": true
+      }
+    },
+    "team_members": {
+      "success": true,
+      "data": {
+        "member_count": 11,
+        "expected_found": 3,
+        "structure_ok": true,
+        "members": [
+          "deepcoder_primary",
+          "qwen_analyst",
+          "deepseek_legacy",
+          "granite_enterprise",
+          "granite_vision",
+          "mistral_versatile",
+          "gemma_medium",
+          "granite_moe",
+          "gemma_tiny",
+          "deepseek_abliterated",
+          "dolphin_abliterated"
+        ]
+      }
+    }
+  }
+}

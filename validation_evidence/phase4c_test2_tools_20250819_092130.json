@@ -1,0 +1,117 @@
+{
+  "timestamp": "2025-08-19T09:21:30.918630",
+  "test_type": "tool_integration_validation",
+  "phase": "4C_part2",
+  "test_number": 2,
+  "passed_tests": 2,
+  "total_tests": 3,
+  "success_rate": 66.66666666666666,
+  "overall_success": false,
+  "web_search": {
+    "success": true,
+    "data": {
+      "tests_passed": 3,
+      "total_tests": 3,
+      "search_working": 3,
+      "detailed_results": [
+        {
+          "test": "Vue.js Best Practices",
+          "success": true,
+          "model_used": "deepcoder:latest",
+          "response_time": 161.9637439250946,
+          "response_length": 8365,
+          "has_search_content": true,
+          "web_search_working": true
+        },
+        {
+          "test": "Excel VBA Functions",
+          "success": true,
+          "model_used": "qwen2.5:14b",
+          "response_time": 92.02337574958801,
+          "response_length": 4315,
+          "has_search_content": true,
+          "web_search_working": true
+        },
+        {
+          "test": "Laravel Routing",
+          "success": true,
+          "model_used": "deepseek-coder-v2:16b",
+          "response_time": 30.634289741516113,
+          "response_length": 3283,
+          "has_search_content": true,
+          "web_search_working": true
+        }
+      ]
+    }
+  },
+  "code_execution": {
+    "success": false,
+    "data": {
+      "tests_passed": 2,
+      "total_tests": 3,
+      "execution_working": 2,
+      "detailed_results": [
+        {
+          "test": "Python Data Processing",
+          "success": false,
+          "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=300)"
+        },
+        {
+          "test": "JavaScript Array Manipulation",
+          "success": true,
+          "model_used": "deepcoder:latest",
+          "response_time": 170.60673785209656,
+          "has_code": true,
+          "has_execution": true,
+          "code_execution_working": true
+        },
+        {
+          "test": "Algorithm Implementation",
+          "success": true,
+          "model_used": "qwen2.5:14b",
+          "response_time": 54.44153094291687,
+          "has_code": true,
+          "has_execution": true,
+          "code_execution_working": true
+        }
+      ]
+    }
+  },
+  "file_analysis": {
+    "success": true,
+    "data": {
+      "tests_passed": 3,
+      "total_tests": 3,
+      "analysis_working": 3,
+      "detailed_results": [
+        {
+          "test": "Text File Analysis",
+          "success": true,
+          "model_used": "deepcoder:latest",
+          "response_time": 56.840946197509766,
+          "has_analysis": true,
+          "content_understanding": true,
+          "file_analysis_working": true
+        },
+        {
+          "test": "CSV Data Processing",
+          "success": true,
+          "model_used": "qwen2.5:14b",
+          "response_time": 92.01520776748657,
+          "has_analysis": true,
+          "content_understanding": true,
+          "file_analysis_working": true
+        },
+        {
+          "test": "JSON Configuration Analysis",
+          "success": true,
+          "model_used": "deepcoder:latest",
+          "response_time": 126.47206020355225,
+          "has_analysis": true,
+          "content_understanding": true,
+          "file_analysis_working": true
+        }
+      ]
+    }
+  }
+}

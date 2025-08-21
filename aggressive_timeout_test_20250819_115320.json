@@ -1,0 +1,46 @@
+[
+  {
+    "test": "Massive Code Generation",
+    "result_300s": {
+      "success": true,
+      "time": 187.76808500289917,
+      "response_length": 11379,
+      "timeout": false,
+      "timeout_limit": 300
+    },
+    "result_600s": {
+      "success": true,
+      "time": 207.8685438632965,
+      "response_length": 12017,
+      "timeout": false,
+      "timeout_limit": 600
+    }
+  },
+  {
+    "test": "Complex Algorithm Implementation",
+    "result_300s": {
+      "success": false,
+      "timeout": true,
+      "time": 299.9974207878113,
+      "timeout_limit": 300
+    },
+    "result_600s": null
+  },
+  {
+    "test": "Comprehensive Data Analysis",
+    "result_300s": {
+      "success": true,
+      "time": 217.92409086227417,
+      "response_length": 11890,
+      "timeout": false,
+      "timeout_limit": 300
+    },
+    "result_600s": {
+      "success": true,
+      "time": 250.4197278022766,
+      "response_length": 14538,
+      "timeout": false,
+      "timeout_limit": 600
+    }
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "timestamp": "2025-08-20T19:27:20.272874",
+  "test_type": "search_tools_validation",
+  "environment": {
+    "TAVILY_API_KEY": "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",
+    "BRAVE_API_KEY": "BSA6t1TqhZKOcGaYNjPi00j1FUlB8TE",
+    "GOOGLE_API_KEY": "AIzaSyCQ0C2u7jjzBUzUt5x7XFe7BoZNQUkB3j0",
+    "GOOGLE_CSE_ID": "17805e8b8f0b94866"
+  },
+  "results": {
+    "duckduckgo": {
+      "success": true,
+      "result": "DuckDuckGo: No direct results found for this query",
+      "timestamp": "2025-08-20T19:27:18.315726"
+    },
+    "tavily": {
+      "success": true,
+      "result": "Tavily Search: Use Power Query for data loading, Pivot Tables for analysis, and VBA for automated data set creation.\n\n\u2022 Working with large datasets : r/vba: You can load the data into Excel's data model throuth Power Query. Then, build a data model through ...\n\u2022 How to Analyze Large Data Sets in Excel (6 Methods): Excel offers various methods to analyze large datasets, and one effective approach is utilizing Pivo...\n",
+      "timestamp": "2025-08-20T19:27:19.629011"
+    },
+    "brave": {
+      "success": true,
+      "result": "Brave Search Results:\n\n\u2022 vba/excel analysis of large data set - Super User: <strong>This one is an array formula, so it is entered with CTRL-Shift Enter</strong>, rather than j...\n\u2022 What is the alternative to Excel VBA for a large dataset? - Quora: Answer (1 of 3): It depends on how large. Microsoft Access can process more data and more quickly bu...\n\u2022 WorksheetFunction.Large method (Excel) | Microsoft Learn: <strong>Returns the k-th largest value in a data set</strong>. Use this function to select a value b...\n",
+      "timestamp": "2025-08-20T19:27:19.971089"
+    },
+    "google": {
+      "success": true,
+      "result": "Google Search Results:\n\n\u2022 Speed up my VBA functions - looping through a large dataset ...: May 2, 2013 ... I am looking for some help to speedup an excel workbook I have created using a numbe...\n\u2022 Are there tricks to speed up excel when using large data sets? : r/excel: Dec 25, 2023 ... I used VBA to iterate through the data and perform the required adjustments. ... Al...\n\u2022 optimization - VBA-Excel and large data sets causes program to ...: Apr 20, 2011 ... I created a function which uses excel Percentile function and ranks based on where ...\n",
+      "timestamp": "2025-08-20T19:27:20.272781"
+    }
+  },
+  "working_providers": [
+    "duckduckgo",
+    "tavily",
+    "brave",
+    "google"
+  ],
+  "success_rate": 100.0
+}

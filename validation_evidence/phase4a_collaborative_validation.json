@@ -1,826 +1,651 @@
 {
-  "validation_timestamp": "2025-08-16T20:52:18.508003",
+  "validation_timestamp": "2025-08-20T17:21:12.447806",
   "validation_type": "phase4a_collaborative_memory_investigation",
   "computer_restart_completed": true,
   "investigations": {
     "memory_unload_timing": {
-      "timestamp": "2025-08-16T20:39:02.798007",
+      "timestamp": "2025-08-20T17:17:13.195288",
       "test_model": "deepcoder:latest",
-      "load_duration_seconds": 6.5289552211761475,
+      "load_duration_seconds": 6.402745008468628,
       "load_success": true,
-      "unload_duration_seconds": 90.26786160469055,
+      "unload_duration_seconds": 90.20361185073853,
       "unload_command_success": true,
       "unload_effective": false,
       "baseline_memory": {
-        "timestamp": 1755394640.997972,
-        "datetime": "2025-08-16T20:37:20.997973",
+        "timestamp": 1755728131.585858,
+        "datetime": "2025-08-20T17:15:31.585859",
         "total_gb": 18.0,
-        "available_gb": 7.390899658203125,
-        "used_gb": 9.245223999023438,
-        "percent_used": 58.9,
-        "free_gb": 0.0847625732421875,
+        "available_gb": 6.8841400146484375,
+        "used_gb": 8.571151733398438,
+        "percent_used": 61.8,
+        "free_gb": 0.2802581787109375,
         "cached_gb": 0.0,
         "buffers_gb": 0.0
       },
       "after_load_memory": {
-        "timestamp": 1755394647.527333,
-        "datetime": "2025-08-16T20:37:27.527342",
+        "timestamp": 1755728137.9889832,
+        "datetime": "2025-08-20T17:15:37.988992",
         "total_gb": 18.0,
-        "available_gb": 2.2734527587890625,
-        "used_gb": 12.815139770507812,
-        "percent_used": 87.4,
-        "free_gb": 0.0555419921875,
+        "available_gb": 2.394744873046875,
+        "used_gb": 13.026229858398438,
+        "percent_used": 86.7,
+        "free_gb": 0.0698699951171875,
         "cached_gb": 0.0,
         "buffers_gb": 0.0
       },
-      "estimated_model_memory_gb": 5.1174468994140625,
+      "estimated_model_memory_gb": 4.4893951416015625,
       "memory_analysis": {
         "total_duration": 90,
         "memory_snapshots": 45,
-        "peak_release": -0.6090240478515625,
-        "final_release": -0.664215087890625,
+        "peak_release": 0.00042724609375,
+        "final_release": -0.013427734375,
         "release_timeline": [
           {
             "time_seconds": 0,
-            "memory_change_gb": -3.97564697265625,
-            "available_gb": 3.415252685546875
+            "memory_change_gb": -4.2189788818359375,
+            "available_gb": 2.6651611328125
           },
           {
             "time_seconds": 2,
-            "memory_change_gb": -1.8131103515625,
-            "available_gb": 5.577789306640625
+            "memory_change_gb": -2.0955352783203125,
+            "available_gb": 4.788604736328125
           },
           {
             "time_seconds": 4,
-            "memory_change_gb": -1.8016357421875,
-            "available_gb": 5.589263916015625
+            "memory_change_gb": -2.094879150390625,
+            "available_gb": 4.7892608642578125
           },
           {
             "time_seconds": 6,
-            "memory_change_gb": -1.78173828125,
-            "available_gb": 5.609161376953125
+            "memory_change_gb": -2.0650787353515625,
+            "available_gb": 4.819061279296875
           },
           {
             "time_seconds": 8,
-            "memory_change_gb": -1.38427734375,
-            "available_gb": 6.006622314453125
+            "memory_change_gb": -2.06634521484375,
+            "available_gb": 4.8177947998046875
           },
           {
             "time_seconds": 10,
-            "memory_change_gb": -0.646148681640625,
-            "available_gb": 6.7447509765625
+            "memory_change_gb": -1.385528564453125,
+            "available_gb": 5.4986114501953125
           },
           {
             "time_seconds": 12,
-            "memory_change_gb": -0.619415283203125,
-            "available_gb": 6.771484375
+            "memory_change_gb": -1.47039794921875,
+            "available_gb": 5.4137420654296875
           },
           {
             "time_seconds": 14,
-            "memory_change_gb": -0.6090240478515625,
-            "available_gb": 6.7818756103515625
+            "memory_change_gb": -0.8990325927734375,
+            "available_gb": 5.985107421875
           },
           {
             "time_seconds": 16,
-            "memory_change_gb": -0.6226806640625,
-            "available_gb": 6.768218994140625
+            "memory_change_gb": -0.8553619384765625,
+            "available_gb": 6.028778076171875
           },
           {
             "time_seconds": 18,
-            "memory_change_gb": -0.619384765625,
-            "available_gb": 6.771514892578125
-          },
-          {
-            "time_seconds": 20,
-            "memory_change_gb": -0.61297607421875,
-            "available_gb": 6.777923583984375
-          },
-          {
-            "time_seconds": 22,
-            "memory_change_gb": -0.6229248046875,
-            "available_gb": 6.767974853515625
-          },
-          {
-            "time_seconds": 24,
-            "memory_change_gb": -0.6334686279296875,
-            "available_gb": 6.7574310302734375
-          },
-          {
-            "time_seconds": 26,
-            "memory_change_gb": -0.6298980712890625,
-            "available_gb": 6.7610015869140625
-          },
-          {
-            "time_seconds": 28,
-            "memory_change_gb": -0.6355133056640625,
-            "available_gb": 6.7553863525390625
-          },
-          {
-            "time_seconds": 30,
-            "memory_change_gb": -0.6419525146484375,
-            "available_gb": 6.7489471435546875
-          },
-          {
-            "time_seconds": 32,
-            "memory_change_gb": -0.64312744140625,
-            "available_gb": 6.747772216796875
-          },
-          {
-            "time_seconds": 34,
-            "memory_change_gb": -0.645263671875,
-            "available_gb": 6.745635986328125
-          },
-          {
-            "time_seconds": 36,
-            "memory_change_gb": -0.647918701171875,
-            "available_gb": 6.74298095703125
-          },
-          {
-            "time_seconds": 38,
-            "memory_change_gb": -0.6472015380859375,
-            "available_gb": 6.7436981201171875
-          },
-          {
-            "time_seconds": 40,
-            "memory_change_gb": -0.6421966552734375,
-            "available_gb": 6.7487030029296875
-          },
-          {
-            "time_seconds": 42,
-            "memory_change_gb": -0.6539306640625,
-            "available_gb": 6.736968994140625
-          },
-          {
-            "time_seconds": 44,
-            "memory_change_gb": -0.656036376953125,
-            "available_gb": 6.73486328125
-          },
-          {
-            "time_seconds": 46,
-            "memory_change_gb": -0.6575164794921875,
-            "available_gb": 6.7333831787109375
-          },
-          {
-            "time_seconds": 48,
-            "memory_change_gb": -0.6560516357421875,
-            "available_gb": 6.7348480224609375
-          },
-          {
-            "time_seconds": 50,
-            "memory_change_gb": -0.6726837158203125,
-            "available_gb": 6.7182159423828125
-          },
-          {
-            "time_seconds": 52,
-            "memory_change_gb": -0.6669158935546875,
-            "available_gb": 6.7239837646484375
-          },
-          {
-            "time_seconds": 54,
-            "memory_change_gb": -0.7767791748046875,
-            "available_gb": 6.6141204833984375
-          },
-          {
-            "time_seconds": 56,
-            "memory_change_gb": -0.66741943359375,
-            "available_gb": 6.723480224609375
-          },
-          {
-            "time_seconds": 58,
-            "memory_change_gb": -0.6759490966796875,
-            "available_gb": 6.7149505615234375
-          },
-          {
-            "time_seconds": 60,
-            "memory_change_gb": -0.6623077392578125,
-            "available_gb": 6.7285919189453125
-          },
-          {
-            "time_seconds": 62,
-            "memory_change_gb": -0.6608734130859375,
-            "available_gb": 6.7300262451171875
-          },
-          {
-            "time_seconds": 64,
-            "memory_change_gb": -0.65728759765625,
-            "available_gb": 6.733612060546875
-          },
-          {
-            "time_seconds": 66,
-            "memory_change_gb": -0.6600799560546875,
-            "available_gb": 6.7308197021484375
-          },
-          {
-            "time_seconds": 68,
-            "memory_change_gb": -0.6588592529296875,
-            "available_gb": 6.7320404052734375
-          },
-          {
-            "time_seconds": 70,
-            "memory_change_gb": -0.6698455810546875,
-            "available_gb": 6.7210540771484375
-          },
-          {
-            "time_seconds": 72,
-            "memory_change_gb": -0.6683807373046875,
-            "available_gb": 6.7225189208984375
-          },
-          {
-            "time_seconds": 74,
-            "memory_change_gb": -0.6664886474609375,
-            "available_gb": 6.7244110107421875
-          },
-          {
-            "time_seconds": 76,
-            "memory_change_gb": -0.66534423828125,
-            "available_gb": 6.725555419921875
-          },
-          {
-            "time_seconds": 78,
-            "memory_change_gb": -0.6680145263671875,
-            "available_gb": 6.7228851318359375
-          },
-          {
-            "time_seconds": 80,
-            "memory_change_gb": -0.6787872314453125,
-            "available_gb": 6.7121124267578125
-          },
-          {
-            "time_seconds": 82,
-            "memory_change_gb": -0.664581298828125,
-            "available_gb": 6.726318359375
-          },
-          {
-            "time_seconds": 84,
-            "memory_change_gb": -0.6634063720703125,
-            "available_gb": 6.7274932861328125
-          },
-          {
-            "time_seconds": 86,
-            "memory_change_gb": -0.662322998046875,
-            "available_gb": 6.72857666015625
-          },
-          {
-            "time_seconds": 88,
-            "memory_change_gb": -0.664215087890625,
-            "available_gb": 6.7266845703125
+            "memory_change_gb": -0.62481689453125,
+            "available_gb": 6.2593231201171875
           }
         ]
       },
       "memory_monitoring_data": [
         {
-          "timestamp": 1755394652.571139,
-          "datetime": "2025-08-16T20:37:32.571142",
+          "timestamp": 1755728143.007788,
+          "datetime": "2025-08-20T17:15:43.007791",
           "total_gb": 18.0,
-          "available_gb": 3.415252685546875,
-          "used_gb": 11.465927124023438,
-          "percent_used": 81.0,
-          "free_gb": 0.0625457763671875,
+          "available_gb": 2.6651611328125,
+          "used_gb": 12.761825561523438,
+          "percent_used": 85.2,
+          "free_gb": 0.0752410888671875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -3.97564697265625
+          "change_from_baseline_gb": -4.2189788818359375
         },
         {
-          "timestamp": 1755394654.576393,
-          "datetime": "2025-08-16T20:37:34.576399",
+          "timestamp": 1755728145.013012,
+          "datetime": "2025-08-20T17:15:45.013016",
           "total_gb": 18.0,
-          "available_gb": 5.577789306640625,
-          "used_gb": 9.334686279296875,
-          "percent_used": 69.0,
-          "free_gb": 0.594696044921875,
+          "available_gb": 4.788604736328125,
+          "used_gb": 10.672760009765625,
+          "percent_used": 73.4,
+          "free_gb": 0.6273040771484375,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -1.8131103515625
+          "change_from_baseline_gb": -2.0955352783203125
         },
         {
-          "timestamp": 1755394656.581681,
-          "datetime": "2025-08-16T20:37:36.581686",
+          "timestamp": 1755728147.015451,
+          "datetime": "2025-08-20T17:15:47.015455",
           "total_gb": 18.0,
-          "available_gb": 5.589263916015625,
-          "used_gb": 9.318084716796875,
-          "percent_used": 68.9,
-          "free_gb": 0.5819244384765625,
+          "available_gb": 4.7892608642578125,
+          "used_gb": 10.665359497070312,
+          "percent_used": 73.4,
+          "free_gb": 0.618377685546875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -1.8016357421875
+          "change_from_baseline_gb": -2.094879150390625
         },
         {
-          "timestamp": 1755394658.586945,
-          "datetime": "2025-08-16T20:37:38.586950",
+          "timestamp": 1755728149.020781,
+          "datetime": "2025-08-20T17:15:49.020785",
           "total_gb": 18.0,
-          "available_gb": 5.609161376953125,
-          "used_gb": 9.301605224609375,
-          "percent_used": 68.8,
-          "free_gb": 0.5823516845703125,
+          "available_gb": 4.819061279296875,
+          "used_gb": 10.640182495117188,
+          "percent_used": 73.2,
+          "free_gb": 0.62060546875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -1.78173828125
+          "change_from_baseline_gb": -2.0650787353515625
         },
         {
-          "timestamp": 1755394660.592195,
-          "datetime": "2025-08-16T20:37:40.592199",
+          "timestamp": 1755728151.025014,
+          "datetime": "2025-08-20T17:15:51.025018",
           "total_gb": 18.0,
-          "available_gb": 6.006622314453125,
-          "used_gb": 8.947357177734375,
-          "percent_used": 66.6,
-          "free_gb": 0.2511749267578125,
+          "available_gb": 4.8177947998046875,
+          "used_gb": 10.63665771484375,
+          "percent_used": 73.2,
+          "free_gb": 0.6143798828125,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -1.38427734375
+          "change_from_baseline_gb": -2.06634521484375
         },
         {
-          "timestamp": 1755394662.5930922,
-          "datetime": "2025-08-16T20:37:42.593097",
+          "timestamp": 1755728153.03039,
+          "datetime": "2025-08-20T17:15:53.030395",
           "total_gb": 18.0,
-          "available_gb": 6.7447509765625,
-          "used_gb": 8.2149658203125,
-          "percent_used": 62.5,
-          "free_gb": 0.2888946533203125,
+          "available_gb": 5.4986114501953125,
+          "used_gb": 9.966598510742188,
+          "percent_used": 69.5,
+          "free_gb": 0.6049652099609375,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.646148681640625
+          "change_from_baseline_gb": -1.385528564453125
         },
         {
-          "timestamp": 1755394664.598367,
-          "datetime": "2025-08-16T20:37:44.598371",
+          "timestamp": 1755728155.0309,
+          "datetime": "2025-08-20T17:15:55.030904",
           "total_gb": 18.0,
-          "available_gb": 6.771484375,
-          "used_gb": 8.187286376953125,
-          "percent_used": 62.4,
-          "free_gb": 0.2987518310546875,
+          "available_gb": 5.4137420654296875,
+          "used_gb": 10.043960571289062,
+          "percent_used": 69.9,
+          "free_gb": 0.38458251953125,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.619415283203125
+          "change_from_baseline_gb": -1.47039794921875
         },
         {
-          "timestamp": 1755394666.6036322,
-          "datetime": "2025-08-16T20:37:46.603636",
+          "timestamp": 1755728157.03494,
+          "datetime": "2025-08-20T17:15:57.034945",
           "total_gb": 18.0,
-          "available_gb": 6.7818756103515625,
-          "used_gb": 8.18048095703125,
+          "available_gb": 5.985107421875,
+          "used_gb": 9.47894287109375,
+          "percent_used": 66.7,
+          "free_gb": 0.425506591796875,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.8990325927734375
+        },
+        {
+          "timestamp": 1755728159.040212,
+          "datetime": "2025-08-20T17:15:59.040216",
+          "total_gb": 18.0,
+          "available_gb": 6.028778076171875,
+          "used_gb": 9.44189453125,
+          "percent_used": 66.5,
+          "free_gb": 0.436370849609375,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.8553619384765625
+        },
+        {
+          "timestamp": 1755728161.0435278,
+          "datetime": "2025-08-20T17:16:01.043534",
+          "total_gb": 18.0,
+          "available_gb": 6.2593231201171875,
+          "used_gb": 9.206893920898438,
+          "percent_used": 65.2,
+          "free_gb": 0.4066009521484375,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.62481689453125
+        },
+        {
+          "timestamp": 1755728163.048915,
+          "datetime": "2025-08-20T17:16:03.048919",
+          "total_gb": 18.0,
+          "available_gb": 6.790283203125,
+          "used_gb": 8.678085327148438,
           "percent_used": 62.3,
-          "free_gb": 0.3111419677734375,
+          "free_gb": 0.3924560546875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6090240478515625
+          "change_from_baseline_gb": -0.0938568115234375
         },
         {
-          "timestamp": 1755394668.608902,
-          "datetime": "2025-08-16T20:37:48.608907",
+          "timestamp": 1755728165.054202,
+          "datetime": "2025-08-20T17:16:05.054207",
           "total_gb": 18.0,
-          "available_gb": 6.768218994140625,
-          "used_gb": 8.187515258789062,
+          "available_gb": 6.8263702392578125,
+          "used_gb": 8.635604858398438,
+          "percent_used": 62.1,
+          "free_gb": 0.3694610595703125,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.057769775390625
+        },
+        {
+          "timestamp": 1755728167.059466,
+          "datetime": "2025-08-20T17:16:07.059471",
+          "total_gb": 18.0,
+          "available_gb": 6.841094970703125,
+          "used_gb": 8.625473022460938,
+          "percent_used": 62.0,
+          "free_gb": 0.36749267578125,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.0430450439453125
+        },
+        {
+          "timestamp": 1755728169.064734,
+          "datetime": "2025-08-20T17:16:09.064739",
+          "total_gb": 18.0,
+          "available_gb": 6.8642425537109375,
+          "used_gb": 8.60546875,
+          "percent_used": 61.9,
+          "free_gb": 0.35845947265625,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.0198974609375
+        },
+        {
+          "timestamp": 1755728171.0699189,
+          "datetime": "2025-08-20T17:16:11.069921",
+          "total_gb": 18.0,
+          "available_gb": 6.812957763671875,
+          "used_gb": 8.661407470703125,
+          "percent_used": 62.2,
+          "free_gb": 0.2672576904296875,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.0711822509765625
+        },
+        {
+          "timestamp": 1755728173.073727,
+          "datetime": "2025-08-20T17:16:13.073730",
+          "total_gb": 18.0,
+          "available_gb": 6.8553466796875,
+          "used_gb": 8.611495971679688,
+          "percent_used": 61.9,
+          "free_gb": 0.2638702392578125,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.0287933349609375
+        },
+        {
+          "timestamp": 1755728175.078926,
+          "datetime": "2025-08-20T17:16:15.078929",
+          "total_gb": 18.0,
+          "available_gb": 6.8519287109375,
+          "used_gb": 8.621017456054688,
+          "percent_used": 61.9,
+          "free_gb": 0.15045166015625,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.0322113037109375
+        },
+        {
+          "timestamp": 1755728177.0841448,
+          "datetime": "2025-08-20T17:16:17.084148",
+          "total_gb": 18.0,
+          "available_gb": 6.8753662109375,
+          "used_gb": 8.59906005859375,
+          "percent_used": 61.8,
+          "free_gb": 0.152099609375,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.0087738037109375
+        },
+        {
+          "timestamp": 1755728179.089351,
+          "datetime": "2025-08-20T17:16:19.089354",
+          "total_gb": 18.0,
+          "available_gb": 6.81231689453125,
+          "used_gb": 8.671554565429688,
+          "percent_used": 62.2,
+          "free_gb": 0.1337738037109375,
+          "cached_gb": 0.0,
+          "buffers_gb": 0.0,
+          "change_from_baseline_gb": -0.0718231201171875
+        },
+        {
+          "timestamp": 1755728181.094569,
+          "datetime": "2025-08-20T17:16:21.094572",
+          "total_gb": 18.0,
+          "available_gb": 6.7662353515625,
+          "used_gb": 8.730819702148438,
           "percent_used": 62.4,
-          "free_gb": 0.2970733642578125,
+          "free_gb": 0.0726776123046875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6226806640625
+          "change_from_baseline_gb": -0.1179046630859375
         },
         {
-          "timestamp": 1755394670.61417,
-          "datetime": "2025-08-16T20:37:50.614175",
+          "timestamp": 1755728183.097408,
+          "datetime": "2025-08-20T17:16:23.097413",
           "total_gb": 18.0,
-          "available_gb": 6.771514892578125,
-          "used_gb": 8.18780517578125,
-          "percent_used": 62.4,
-          "free_gb": 0.2990570068359375,
+          "available_gb": 6.8532257080078125,
+          "used_gb": 8.634674072265625,
+          "percent_used": 61.9,
+          "free_gb": 0.0997467041015625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.619384765625
+          "change_from_baseline_gb": -0.030914306640625
         },
         {
-          "timestamp": 1755394672.619536,
-          "datetime": "2025-08-16T20:37:52.619540",
+          "timestamp": 1755728185.101195,
+          "datetime": "2025-08-20T17:16:25.101199",
           "total_gb": 18.0,
-          "available_gb": 6.777923583984375,
-          "used_gb": 8.183746337890625,
-          "percent_used": 62.3,
-          "free_gb": 0.3047027587890625,
+          "available_gb": 6.88031005859375,
+          "used_gb": 8.613143920898438,
+          "percent_used": 61.8,
+          "free_gb": 0.095672607421875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.61297607421875
+          "change_from_baseline_gb": -0.0038299560546875
         },
         {
-          "timestamp": 1755394674.624815,
-          "datetime": "2025-08-16T20:37:54.624820",
+          "timestamp": 1755728187.105262,
+          "datetime": "2025-08-20T17:16:27.105264",
           "total_gb": 18.0,
-          "available_gb": 6.767974853515625,
-          "used_gb": 8.202392578125,
-          "percent_used": 62.4,
-          "free_gb": 0.28106689453125,
+          "available_gb": 6.865020751953125,
+          "used_gb": 8.627655029296875,
+          "percent_used": 61.9,
+          "free_gb": 0.0716094970703125,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6229248046875
+          "change_from_baseline_gb": -0.0191192626953125
         },
         {
-          "timestamp": 1755394676.630083,
-          "datetime": "2025-08-16T20:37:56.630087",
+          "timestamp": 1755728189.109529,
+          "datetime": "2025-08-20T17:16:29.109531",
           "total_gb": 18.0,
-          "available_gb": 6.7574310302734375,
-          "used_gb": 8.20721435546875,
-          "percent_used": 62.5,
-          "free_gb": 0.2668609619140625,
+          "available_gb": 6.8548431396484375,
+          "used_gb": 8.629119873046875,
+          "percent_used": 61.9,
+          "free_gb": 0.0589447021484375,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6334686279296875
+          "change_from_baseline_gb": -0.029296875
         },
         {
-          "timestamp": 1755394678.635364,
-          "datetime": "2025-08-16T20:37:58.635368",
+          "timestamp": 1755728191.114764,
+          "datetime": "2025-08-20T17:16:31.114769",
           "total_gb": 18.0,
-          "available_gb": 6.7610015869140625,
-          "used_gb": 8.202133178710938,
-          "percent_used": 62.4,
-          "free_gb": 0.2682342529296875,
+          "available_gb": 6.8641510009765625,
+          "used_gb": 8.627792358398438,
+          "percent_used": 61.9,
+          "free_gb": 0.0697021484375,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6298980712890625
+          "change_from_baseline_gb": -0.019989013671875
         },
         {
-          "timestamp": 1755394680.638002,
-          "datetime": "2025-08-16T20:38:00.638007",
+          "timestamp": 1755728193.117942,
+          "datetime": "2025-08-20T17:16:33.117946",
           "total_gb": 18.0,
-          "available_gb": 6.7553863525390625,
-          "used_gb": 8.214691162109375,
-          "percent_used": 62.5,
-          "free_gb": 0.2553558349609375,
+          "available_gb": 6.86669921875,
+          "used_gb": 8.634231567382812,
+          "percent_used": 61.9,
+          "free_gb": 0.1175384521484375,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6355133056640625
+          "change_from_baseline_gb": -0.0174407958984375
         },
         {
-          "timestamp": 1755394682.64338,
-          "datetime": "2025-08-16T20:38:02.643386",
+          "timestamp": 1755728195.123204,
+          "datetime": "2025-08-20T17:16:35.123209",
           "total_gb": 18.0,
-          "available_gb": 6.7489471435546875,
-          "used_gb": 8.222061157226562,
-          "percent_used": 62.5,
-          "free_gb": 0.2501220703125,
+          "available_gb": 6.854522705078125,
+          "used_gb": 8.637893676757812,
+          "percent_used": 61.9,
+          "free_gb": 0.0761871337890625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6419525146484375
+          "change_from_baseline_gb": -0.0296173095703125
         },
         {
-          "timestamp": 1755394684.648726,
-          "datetime": "2025-08-16T20:38:04.648731",
+          "timestamp": 1755728197.127857,
+          "datetime": "2025-08-20T17:16:37.127862",
           "total_gb": 18.0,
-          "available_gb": 6.747772216796875,
-          "used_gb": 8.221664428710938,
-          "percent_used": 62.5,
-          "free_gb": 0.2447662353515625,
+          "available_gb": 6.8639373779296875,
+          "used_gb": 8.631195068359375,
+          "percent_used": 61.9,
+          "free_gb": 0.0623626708984375,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.64312744140625
+          "change_from_baseline_gb": -0.02020263671875
         },
         {
-          "timestamp": 1755394686.652014,
-          "datetime": "2025-08-16T20:38:06.652019",
+          "timestamp": 1755728199.1290371,
+          "datetime": "2025-08-20T17:16:39.129039",
           "total_gb": 18.0,
-          "available_gb": 6.745635986328125,
-          "used_gb": 8.221405029296875,
-          "percent_used": 62.5,
-          "free_gb": 0.242767333984375,
+          "available_gb": 6.8637847900390625,
+          "used_gb": 8.63470458984375,
+          "percent_used": 61.9,
+          "free_gb": 0.065521240234375,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.645263671875
+          "change_from_baseline_gb": -0.020355224609375
         },
         {
-          "timestamp": 1755394688.6572769,
-          "datetime": "2025-08-16T20:38:08.657281",
+          "timestamp": 1755728201.1306188,
+          "datetime": "2025-08-20T17:16:41.130623",
           "total_gb": 18.0,
-          "available_gb": 6.74298095703125,
-          "used_gb": 8.222442626953125,
-          "percent_used": 62.5,
-          "free_gb": 0.240234375,
+          "available_gb": 6.8466949462890625,
+          "used_gb": 8.647125244140625,
+          "percent_used": 62.0,
+          "free_gb": 0.067657470703125,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.647918701171875
+          "change_from_baseline_gb": -0.037445068359375
         },
         {
-          "timestamp": 1755394690.662549,
-          "datetime": "2025-08-16T20:38:10.662553",
+          "timestamp": 1755728203.135843,
+          "datetime": "2025-08-20T17:16:43.135845",
           "total_gb": 18.0,
-          "available_gb": 6.7436981201171875,
-          "used_gb": 8.22698974609375,
-          "percent_used": 62.5,
-          "free_gb": 0.239410400390625,
+          "available_gb": 6.8380889892578125,
+          "used_gb": 8.656692504882812,
+          "percent_used": 62.0,
+          "free_gb": 0.088165283203125,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6472015380859375
+          "change_from_baseline_gb": -0.046051025390625
         },
         {
-          "timestamp": 1755394692.6677032,
-          "datetime": "2025-08-16T20:38:12.667708",
+          "timestamp": 1755728205.140963,
+          "datetime": "2025-08-20T17:16:45.140965",
           "total_gb": 18.0,
-          "available_gb": 6.7487030029296875,
-          "used_gb": 8.215835571289062,
-          "percent_used": 62.5,
-          "free_gb": 0.2351226806640625,
+          "available_gb": 6.8563385009765625,
+          "used_gb": 8.641372680664062,
+          "percent_used": 61.9,
+          "free_gb": 0.0889892578125,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6421966552734375
+          "change_from_baseline_gb": -0.027801513671875
         },
         {
-          "timestamp": 1755394694.672972,
-          "datetime": "2025-08-16T20:38:14.672977",
+          "timestamp": 1755728207.1461,
+          "datetime": "2025-08-20T17:16:47.146102",
           "total_gb": 18.0,
-          "available_gb": 6.736968994140625,
-          "used_gb": 8.234970092773438,
-          "percent_used": 62.6,
-          "free_gb": 0.2152099609375,
+          "available_gb": 6.8437652587890625,
+          "used_gb": 8.647354125976562,
+          "percent_used": 62.0,
+          "free_gb": 0.0611572265625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6539306640625
+          "change_from_baseline_gb": -0.040374755859375
         },
         {
-          "timestamp": 1755394696.6782458,
-          "datetime": "2025-08-16T20:38:16.678250",
+          "timestamp": 1755728209.151262,
+          "datetime": "2025-08-20T17:16:49.151265",
           "total_gb": 18.0,
-          "available_gb": 6.73486328125,
-          "used_gb": 8.2386474609375,
-          "percent_used": 62.6,
-          "free_gb": 0.2114410400390625,
+          "available_gb": 6.8529815673828125,
+          "used_gb": 8.6473388671875,
+          "percent_used": 61.9,
+          "free_gb": 0.06695556640625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.656036376953125
+          "change_from_baseline_gb": -0.031158447265625
         },
         {
-          "timestamp": 1755394698.683616,
-          "datetime": "2025-08-16T20:38:18.683622",
+          "timestamp": 1755728211.156459,
+          "datetime": "2025-08-20T17:16:51.156461",
           "total_gb": 18.0,
-          "available_gb": 6.7333831787109375,
-          "used_gb": 8.242172241210938,
-          "percent_used": 62.6,
-          "free_gb": 0.199127197265625,
+          "available_gb": 6.8404388427734375,
+          "used_gb": 8.655227661132812,
+          "percent_used": 62.0,
+          "free_gb": 0.0679168701171875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6575164794921875
+          "change_from_baseline_gb": -0.043701171875
         },
         {
-          "timestamp": 1755394700.688912,
-          "datetime": "2025-08-16T20:38:20.688917",
+          "timestamp": 1755728213.1617658,
+          "datetime": "2025-08-20T17:16:53.161771",
           "total_gb": 18.0,
-          "available_gb": 6.7348480224609375,
-          "used_gb": 8.244338989257812,
-          "percent_used": 62.6,
-          "free_gb": 0.2010650634765625,
+          "available_gb": 6.8524627685546875,
+          "used_gb": 8.641510009765625,
+          "percent_used": 61.9,
+          "free_gb": 0.115875244140625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6560516357421875
+          "change_from_baseline_gb": -0.03167724609375
         },
         {
-          "timestamp": 1755394702.6943638,
-          "datetime": "2025-08-16T20:38:22.694369",
+          "timestamp": 1755728215.167027,
+          "datetime": "2025-08-20T17:16:55.167032",
           "total_gb": 18.0,
-          "available_gb": 6.7182159423828125,
-          "used_gb": 8.25830078125,
-          "percent_used": 62.7,
-          "free_gb": 0.1845855712890625,
+          "available_gb": 6.883056640625,
+          "used_gb": 8.614669799804688,
+          "percent_used": 61.8,
+          "free_gb": 0.1002655029296875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6726837158203125
+          "change_from_baseline_gb": -0.0010833740234375
         },
         {
-          "timestamp": 1755394704.699708,
-          "datetime": "2025-08-16T20:38:24.699713",
+          "timestamp": 1755728217.172273,
+          "datetime": "2025-08-20T17:16:57.172277",
           "total_gb": 18.0,
-          "available_gb": 6.7239837646484375,
-          "used_gb": 8.254745483398438,
-          "percent_used": 62.6,
-          "free_gb": 0.1868133544921875,
+          "available_gb": 6.8845672607421875,
+          "used_gb": 8.615585327148438,
+          "percent_used": 61.8,
+          "free_gb": 0.0831451416015625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6669158935546875
+          "change_from_baseline_gb": 0.00042724609375
         },
         {
-          "timestamp": 1755394706.70498,
-          "datetime": "2025-08-16T20:38:26.704984",
+          "timestamp": 1755728219.176202,
+          "datetime": "2025-08-20T17:16:59.176206",
           "total_gb": 18.0,
-          "available_gb": 6.6141204833984375,
-          "used_gb": 8.368942260742188,
-          "percent_used": 63.3,
-          "free_gb": 0.131011962890625,
+          "available_gb": 6.87774658203125,
+          "used_gb": 8.615524291992188,
+          "percent_used": 61.8,
+          "free_gb": 0.0575103759765625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.7767791748046875
+          "change_from_baseline_gb": -0.0063934326171875
         },
         {
-          "timestamp": 1755394708.710256,
-          "datetime": "2025-08-16T20:38:28.710261",
+          "timestamp": 1755728221.1814349,
+          "datetime": "2025-08-20T17:17:01.181438",
           "total_gb": 18.0,
-          "available_gb": 6.723480224609375,
-          "used_gb": 8.257614135742188,
-          "percent_used": 62.6,
-          "free_gb": 0.1801300048828125,
+          "available_gb": 6.8791656494140625,
+          "used_gb": 8.618118286132812,
+          "percent_used": 61.8,
+          "free_gb": 0.0637359619140625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.66741943359375
+          "change_from_baseline_gb": -0.004974365234375
         },
         {
-          "timestamp": 1755394710.7155452,
-          "datetime": "2025-08-16T20:38:30.715550",
+          "timestamp": 1755728223.186783,
+          "datetime": "2025-08-20T17:17:03.186787",
           "total_gb": 18.0,
-          "available_gb": 6.7149505615234375,
-          "used_gb": 8.26275634765625,
-          "percent_used": 62.7,
-          "free_gb": 0.1628875732421875,
+          "available_gb": 6.8575286865234375,
+          "used_gb": 8.639846801757812,
+          "percent_used": 61.9,
+          "free_gb": 0.095977783203125,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6759490966796875
+          "change_from_baseline_gb": -0.026611328125
         },
         {
-          "timestamp": 1755394712.7209249,
-          "datetime": "2025-08-16T20:38:32.720930",
+          "timestamp": 1755728225.189127,
+          "datetime": "2025-08-20T17:17:05.189132",
           "total_gb": 18.0,
-          "available_gb": 6.7285919189453125,
-          "used_gb": 8.2486572265625,
-          "percent_used": 62.6,
-          "free_gb": 0.1710205078125,
+          "available_gb": 6.864837646484375,
+          "used_gb": 8.6214599609375,
+          "percent_used": 61.9,
+          "free_gb": 0.0716705322265625,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6623077392578125
+          "change_from_baseline_gb": -0.0193023681640625
         },
         {
-          "timestamp": 1755394714.726273,
-          "datetime": "2025-08-16T20:38:34.726278",
+          "timestamp": 1755728227.192482,
+          "datetime": "2025-08-20T17:17:07.192486",
           "total_gb": 18.0,
-          "available_gb": 6.7300262451171875,
-          "used_gb": 8.248779296875,
-          "percent_used": 62.6,
-          "free_gb": 0.1728515625,
+          "available_gb": 6.8739776611328125,
+          "used_gb": 8.622528076171875,
+          "percent_used": 61.8,
+          "free_gb": 0.0561065673828125,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6608734130859375
+          "change_from_baseline_gb": -0.010162353515625
         },
         {
-          "timestamp": 1755394716.7314181,
-          "datetime": "2025-08-16T20:38:36.731423",
+          "timestamp": 1755728229.192944,
+          "datetime": "2025-08-20T17:17:09.192948",
           "total_gb": 18.0,
-          "available_gb": 6.733612060546875,
-          "used_gb": 8.24713134765625,
-          "percent_used": 62.6,
-          "free_gb": 0.1778717041015625,
+          "available_gb": 6.871063232421875,
+          "used_gb": 8.62310791015625,
+          "percent_used": 61.8,
+          "free_gb": 0.076629638671875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.65728759765625
+          "change_from_baseline_gb": -0.0130767822265625
         },
         {
-          "timestamp": 1755394718.7366872,
-          "datetime": "2025-08-16T20:38:38.736691",
+          "timestamp": 1755728231.193365,
+          "datetime": "2025-08-20T17:17:11.193369",
           "total_gb": 18.0,
-          "available_gb": 6.7308197021484375,
-          "used_gb": 8.247573852539062,
-          "percent_used": 62.6,
-          "free_gb": 0.1753387451171875,
+          "available_gb": 6.8707122802734375,
+          "used_gb": 8.6231689453125,
+          "percent_used": 61.8,
+          "free_gb": 0.05633544921875,
           "cached_gb": 0.0,
           "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6600799560546875
-        },
-        {
-          "timestamp": 1755394720.7420301,
-          "datetime": "2025-08-16T20:38:40.742035",
-          "total_gb": 18.0,
-          "available_gb": 6.7320404052734375,
-          "used_gb": 8.248306274414062,
-          "percent_used": 62.6,
-          "free_gb": 0.1765899658203125,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6588592529296875
-        },
-        {
-          "timestamp": 1755394722.7473989,
-          "datetime": "2025-08-16T20:38:42.747403",
-          "total_gb": 18.0,
-          "available_gb": 6.7210540771484375,
-          "used_gb": 8.257965087890625,
-          "percent_used": 62.7,
-          "free_gb": 0.1712493896484375,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6698455810546875
-        },
-        {
-          "timestamp": 1755394724.752664,
-          "datetime": "2025-08-16T20:38:44.752668",
-          "total_gb": 18.0,
-          "available_gb": 6.7225189208984375,
-          "used_gb": 8.257858276367188,
-          "percent_used": 62.7,
-          "free_gb": 0.1727294921875,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6683807373046875
-        },
-        {
-          "timestamp": 1755394726.758005,
-          "datetime": "2025-08-16T20:38:46.758009",
-          "total_gb": 18.0,
-          "available_gb": 6.7244110107421875,
-          "used_gb": 8.257919311523438,
-          "percent_used": 62.6,
-          "free_gb": 0.174713134765625,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6664886474609375
-        },
-        {
-          "timestamp": 1755394728.7632792,
-          "datetime": "2025-08-16T20:38:48.763284",
-          "total_gb": 18.0,
-          "available_gb": 6.725555419921875,
-          "used_gb": 8.257766723632812,
-          "percent_used": 62.6,
-          "free_gb": 0.1758880615234375,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.66534423828125
-        },
-        {
-          "timestamp": 1755394730.76854,
-          "datetime": "2025-08-16T20:38:50.768545",
-          "total_gb": 18.0,
-          "available_gb": 6.7228851318359375,
-          "used_gb": 8.257797241210938,
-          "percent_used": 62.7,
-          "free_gb": 0.1732635498046875,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6680145263671875
-        },
-        {
-          "timestamp": 1755394732.773964,
-          "datetime": "2025-08-16T20:38:52.773968",
-          "total_gb": 18.0,
-          "available_gb": 6.7121124267578125,
-          "used_gb": 8.270339965820312,
-          "percent_used": 62.7,
-          "free_gb": 0.175140380859375,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6787872314453125
-        },
-        {
-          "timestamp": 1755394734.779273,
-          "datetime": "2025-08-16T20:38:54.779278",
-          "total_gb": 18.0,
-          "available_gb": 6.726318359375,
-          "used_gb": 8.25390625,
-          "percent_used": 62.6,
-          "free_gb": 0.1768035888671875,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.664581298828125
-        },
-        {
-          "timestamp": 1755394736.781142,
-          "datetime": "2025-08-16T20:38:56.781146",
-          "total_gb": 18.0,
-          "available_gb": 6.7274932861328125,
-          "used_gb": 8.254287719726562,
-          "percent_used": 62.6,
-          "free_gb": 0.177978515625,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.6634063720703125
-        },
-        {
-          "timestamp": 1755394738.786412,
-          "datetime": "2025-08-16T20:38:58.786417",
-          "total_gb": 18.0,
-          "available_gb": 6.72857666015625,
-          "used_gb": 8.254318237304688,
-          "percent_used": 62.6,
-          "free_gb": 0.1790313720703125,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.662322998046875
-        },
-        {
-          "timestamp": 1755394740.791756,
-          "datetime": "2025-08-16T20:39:00.791761",
-          "total_gb": 18.0,
-          "available_gb": 6.7266845703125,
-          "used_gb": 8.256072998046875,
-          "percent_used": 62.6,
-          "free_gb": 0.177215576171875,
-          "cached_gb": 0.0,
-          "buffers_gb": 0.0,
-          "change_from_baseline_gb": -0.664215087890625
+          "change_from_baseline_gb": -0.013427734375
         }
       ]
     },
     "router_model_switching": {
-      "timestamp": "2025-08-16T20:52:18.505513",
+      "timestamp": "2025-08-20T17:21:12.445287",
       "test_type": "router_model_switching",
       "baseline_memory": {
-        "timestamp": 1755394752.814383,
-        "datetime": "2025-08-16T20:39:12.814393",
+        "timestamp": 1755728243.214061,
+        "datetime": "2025-08-20T17:17:23.214072",
         "total_gb": 18.0,
-        "available_gb": 6.675933837890625,
-        "used_gb": 8.3135986328125,
-        "percent_used": 62.9,
-        "free_gb": 0.138885498046875,
+        "available_gb": 6.8245697021484375,
+        "used_gb": 8.684356689453125,
+        "percent_used": 62.1,
+        "free_gb": 0.0902862548828125,
         "cached_gb": 0.0,
         "buffers_gb": 0.0
       },
@@ -847,46 +672,50 @@
       "results": [
         {
           "test_case": "Vue.js Task",
-          "success": false,
-          "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=300)",
-          "memory_before_gb": 6.6760101318359375,
-          "memory_after_gb": 1.298919677734375,
-          "memory_change_gb": -5.3770904541015625,
-          "routing_correct": false
+          "success": true,
+          "model_used": "DeepCoder Prime",
+          "model_id": "deepcoder:latest",
+          "response_time": 62.58213996887207,
+          "memory_before_gb": 6.824676513671875,
+          "memory_after_gb": 10.356613159179688,
+          "memory_change_gb": 3.5319366455078125,
+          "routing_correct": true
         },
         {
           "test_case": "Excel VBA Task",
-          "success": false,
-          "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=300)",
-          "memory_before_gb": 6.9306640625,
-          "memory_after_gb": 1.687286376953125,
-          "memory_change_gb": -5.243377685546875,
-          "routing_correct": false
+          "success": true,
+          "model_used": "Qwen Data Master",
+          "model_id": "qwen2.5:14b",
+          "response_time": 60.883031129837036,
+          "memory_before_gb": 9.922195434570312,
+          "memory_after_gb": 9.998779296875,
+          "memory_change_gb": 0.0765838623046875,
+          "routing_correct": true
         },
         {
           "test_case": "Laravel Task",
           "success": true,
           "model_used": "DeepSeek Legacy",
           "model_id": "deepseek-coder-v2:16b",
-          "response_time": 125.12553811073303,
-          "memory_before_gb": 6.5140380859375,
-          "memory_after_gb": 0.91973876953125,
-          "memory_change_gb": -5.59429931640625,
+          "response_time": 11.448149919509888,
+          "memory_before_gb": 9.526580810546875,
+          "memory_after_gb": 9.925933837890625,
+          "memory_change_gb": 0.39935302734375,
           "routing_correct": true
         }
       ],
       "summary": {
         "total_tests": 3,
-        "successful_tests": 1,
-        "success_rate": 0.3333333333333333,
-        "correct_routing": 1,
-        "routing_accuracy": 0.3333333333333333
+        "successful_tests": 3,
+        "success_rate": 1.0,
+        "correct_routing": 3,
+        "routing_accuracy": 1.0
       }
     }
   },
   "key_findings": {
     "unload_effective": false,
-    "routing_accuracy": 0.3333333333333333,
+    "routing_accuracy": 1.0,
     "memory_management_working": false
   }
 }

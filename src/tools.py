@@ -17,10 +17,10 @@ logger = logging.getLogger(__name__)
 
 AVAILABLE_TOOLS = {
     "web_search": {
-        "description": "Search the web using DuckDuckGo, Tavily, Google, or Brave",
+        "description": "Search the web using SERPER, Tavily, Google, or Brave",
         "parameters": {
             "query": "Search query",
-            "provider": "Search provider (duckduckgo, tavily, google, brave)"
+            "provider": "Search provider (serper, tavily, google, brave)"
         }
     },
     "excel_optimizer": {
@@ -72,12 +72,35 @@ async def execute_tool(tool_name: str, parameters: Dict[str, Any]) -> str:
         return f"Tool execution error: {str(e)}"
 
 async def _web_search(params: Dict[str, Any]) -> str:
-    """Web search implementation"""
+    """Web search with fallback logic"""
     query = params.get("query", "")
-    provider = params.get("provider", "duckduckgo")
-    
-    if provider == "duckduckgo":
-        return await _duckduckgo_search(query)
+    provider = params.get("provider", "auto")
+
+    if provider == "auto":
+        return await _web_search_with_fallback(query)
+    else:
+        # User-specified provider, no fallback
+        return await _search_single_provider(provider, query)
+
+async def _web_search_with_fallback(query: str) -> str:
+    """Try providers in order with fallback"""
+    # A, B, C, D ranking based on performance
+    providers = ["serper", "brave", "google", "tavily"]
+
+    for provider in providers:
+        try:
+            result = await _search_single_provider(provider, query)
+            if not any(error in result.lower() for error in ["error", "failed", "not configured"]):
+                return result
+        except Exception:
+            continue
+
+    return "All search providers failed. Please check API configurations."
+
+async def _search_single_provider(provider: str, query: str) -> str:
+    """Search with a specific provider"""
+    if provider == "serper":
+        return await _serper_search(query)
     elif provider == "tavily":
         return await _tavily_search(query)
     elif provider == "google":
@@ -87,22 +110,77 @@ async def _web_search(params: Dict[str, Any]) -> str:
     else:
         return f"Unsupported search provider: {provider}"
 
+async def _serper_search(query: str) -> str:
+    """SERPER search implementation"""
+    api_key = os.getenv("SERPER_API_KEY")
+    if not api_key:
+        return "SERPER API key not configured. Set SERPER_API_KEY environment variable."
+
+    try:
+        url = "https://google.serper.dev/search"
+        headers = {
+            "X-API-KEY": api_key,
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "q": query,
+            "num": 3
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, headers=headers, json=payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    results = data.get("organic", [])
+
+                    if not results:
+                        return "SERPER: No results found"
+
+                    output = "SERPER Search Results:\n\n"
+                    for item in results:
+                        title = item.get("title", "")
+                        snippet = item.get("snippet", "")
+                        output += f"• {title}: {snippet[:100]}...\n"
+                    return output
+                else:
+                    return f"SERPER API error: {response.status}"
+    except Exception as e:
+        return f"SERPER search failed: {str(e)}"
+
 async def _duckduckgo_search(query: str) -> str:
     """DuckDuckGo search implementation"""
     try:
         url = f"https://api.duckduckgo.com/?q={query}&format=json&no_html=1&skip_disambig=1"
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    abstract = data.get("Abstract", "")
-                    if abstract:
-                        return f"DuckDuckGo result: {abstract}"
-                    return "DuckDuckGo: No direct results found"
+                if response.status in [200, 202]:
+                    # Handle non-standard content type
+                    text = await response.text()
+                    try:
+                        data = json.loads(text)
+                    except json.JSONDecodeError:
+                        return "DuckDuckGo: Invalid response format"
+
+                    # Try multiple result sources
+                    sources = [
+                        ("Abstract", data.get("Abstract", "")),
+                        ("Answer", data.get("Answer", "")),
+                        ("Definition", data.get("Definition", "")),
+                        ("RelatedTopics", data.get("RelatedTopics", []))
+                    ]
+
+                    for source_name, source_data in sources:
+                        if source_data:
+                            if source_name == "RelatedTopics" and isinstance(source_data, list):
+                                if source_data and "Text" in source_data[0]:
+                                    return f"DuckDuckGo: {source_data[0]['Text']}"
+                            else:
+                                return f"DuckDuckGo: {source_data}"
+
+                    return "DuckDuckGo: No direct results found for this query"
                 return f"DuckDuckGo API error: {response.status}"
     except Exception as e:
         return f"DuckDuckGo search failed: {str(e)}"
-
 async def _tavily_search(query: str) -> str:
     """Tavily search implementation"""
     api_key = os.getenv("TAVILY_API_KEY")
@@ -138,7 +216,7 @@ async def _tavily_search(query: str) -> str:
 async def _google_search(query: str) -> str:
     """Google Custom Search implementation"""
     api_key = os.getenv("GOOGLE_API_KEY")
-    cx = os.getenv("GOOGLE_CX")
+    cx = os.getenv("GOOGLE_CSE_ID")
     
     if not api_key or not cx:
         return "Google search requires GOOGLE_API_KEY and GOOGLE_CX environment variables."
@@ -174,36 +252,44 @@ async def _brave_search(query: str) -> str:
     api_key = os.getenv("BRAVE_API_KEY")
     if not api_key:
         return "Brave API key not configured. Set BRAVE_API_KEY environment variable."
-    
+
     try:
         url = "https://api.search.brave.com/res/v1/web/search"
         headers = {
             "Accept": "application/json",
-            "Accept-Encoding": "gzip",
             "X-Subscription-Token": api_key
         }
+        # Use proper URL encoding for query
+        import urllib.parse
+        encoded_query = urllib.parse.quote_plus(query)
         params = {
-            "q": query,
-            "count": 3
+            "q": encoded_query,
+            "country": "us",
+            "search_lang": "en"
         }
-        
+
         async with aiohttp.ClientSession() as session:
             async with session.get(url, headers=headers, params=params) as response:
                 if response.status == 200:
                     result = await response.json()
                     web_results = result.get("web", {}).get("results", [])
-                    
+
+                    if not web_results:
+                        return "Brave Search: No results found"
+
                     output = "Brave Search Results:\n\n"
-                    for item in web_results:
+                    for item in web_results[:3]:
                         title = item.get("title", "")
                         description = item.get("description", "")
                         output += f"• {title}: {description[:100]}...\n"
                     return output
+                elif response.status == 422:
+                    error_text = await response.text()
+                    return f"Brave API parameter error (422): {error_text[:100]}"
                 else:
                     return f"Brave API error: {response.status}"
     except Exception as e:
         return f"Brave search failed: {str(e)}"
-
 async def _excel_optimizer(params: Dict[str, Any]) -> str:
     """Excel optimization code generator"""
     task = params.get("task", "")
@@ -326,30 +412,30 @@ def _execute_python(code: str) -> str:
         result = output.getvalue()
         return result if result else "Code executed successfully (no output)"
 
-        except Exception as e:
-            return f"Python execution error: {str(e)}"
+    except Exception as e:
+        return f"Python execution error: {str(e)}"
     
     def _execute_javascript(code: str) -> str:
-    """Execute JavaScript code safely"""
-    try:
-        result = subprocess.run(
-            ['node', '-e', code],
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
-        
-        if result.returncode == 0:
-            return result.stdout if result.stdout else "JavaScript executed successfully"
-        else:
-            return f"JavaScript error: {result.stderr}"
-            
-    except subprocess.TimeoutExpired:
-        return "JavaScript execution timed out"
-    except FileNotFoundError:
-        return "Node.js not found - JavaScript execution unavailable"
-    except Exception as e:
-        return f"JavaScript execution error: {str(e)}"
+        """Execute JavaScript code safely"""
+        try:
+            result = subprocess.run(
+                ['node', '-e', code],
+                capture_output=True,
+                text=True,
+                timeout=10
+            )
+    
+            if result.returncode == 0:
+                return result.stdout if result.stdout else "JavaScript executed successfully"
+            else:
+                return f"JavaScript error: {result.stderr}"
+    
+        except subprocess.TimeoutExpired:
+            return "JavaScript execution timed out"
+        except FileNotFoundError:
+            return "Node.js not found - JavaScript execution unavailable"
+        except Exception as e:
+            return f"JavaScript execution error: {str(e)}"
 
 async def _file_analyzer(params: Dict[str, Any]) -> str:
     """File analysis implementation"""

@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-08-18T08:19:55.559171",
+  "test_type": "phase4b_router_validation_corrected",
+  "router_version": "ai_team_router_phase4b.py",
+  "baseline_memory_gb": 9.976119995117188,
+  "tests_executed": 1,
+  "total_tests": 3,
+  "memory_recoveries": 1,
+  "success_rate": 33.33333333333333,
+  "memory_recovery_rate": 33.33333333333333,
+  "overall_success": false,
+  "detailed_results": [
+    {
+      "test": "Vue.js Component",
+      "success": false,
+      "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=90)"
+    },
+    {
+      "test": "Excel Processing",
+      "success": false,
+      "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=90)"
+    },
+    {
+      "test": "Simple Math",
+      "success": true,
+      "model": "deepcoder:latest",
+      "time": 83.59529280662537,
+      "baseline_memory": 9.976119995117188,
+      "final_memory": 9.775711059570312,
+      "memory_recovered": true
+    }
+  ],
+  "conclusion": "Issues detected"
+}

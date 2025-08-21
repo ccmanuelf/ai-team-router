@@ -1,0 +1,68 @@
+[
+  {
+    "test": "Simple Math",
+    "non_streaming": {
+      "success": true,
+      "time": 10.25280499458313,
+      "response_length": 43,
+      "timeout": false
+    },
+    "streaming": {
+      "success": true,
+      "time": 11.014260053634644,
+      "response_length": 503,
+      "chunks": 157,
+      "timeout": false
+    },
+    "comparison": {
+      "time_difference": 0.7614550590515137,
+      "streaming_faster": false,
+      "both_successful": true,
+      "response_similar": false
+    }
+  },
+  {
+    "test": "Complex Python Processing",
+    "non_streaming": {
+      "success": true,
+      "time": 112.70624709129333,
+      "response_length": 7109,
+      "timeout": false
+    },
+    "streaming": {
+      "success": true,
+      "time": 112.47946310043335,
+      "response_length": 6900,
+      "chunks": 1521,
+      "timeout": false
+    },
+    "comparison": {
+      "time_difference": -0.22678399085998535,
+      "streaming_faster": true,
+      "both_successful": true,
+      "response_similar": true
+    }
+  },
+  {
+    "test": "Complex JavaScript Task",
+    "non_streaming": {
+      "success": true,
+      "time": 176.335706949234,
+      "response_length": 9810,
+      "timeout": false
+    },
+    "streaming": {
+      "success": true,
+      "time": 168.37400603294373,
+      "response_length": 9130,
+      "chunks": 2197,
+      "timeout": false
+    },
+    "comparison": {
+      "time_difference": -7.961700916290283,
+      "streaming_faster": true,
+      "both_successful": true,
+      "response_similar": true
+    }
+  }
+]

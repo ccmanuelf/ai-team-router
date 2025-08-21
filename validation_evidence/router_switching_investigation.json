@@ -1,14 +1,14 @@
 {
-  "timestamp": "2025-08-16T20:52:18.505513",
+  "timestamp": "2025-08-20T17:21:12.445287",
   "test_type": "router_model_switching",
   "baseline_memory": {
-    "timestamp": 1755394752.814383,
-    "datetime": "2025-08-16T20:39:12.814393",
+    "timestamp": 1755728243.214061,
+    "datetime": "2025-08-20T17:17:23.214072",
     "total_gb": 18.0,
-    "available_gb": 6.675933837890625,
-    "used_gb": 8.3135986328125,
-    "percent_used": 62.9,
-    "free_gb": 0.138885498046875,
+    "available_gb": 6.8245697021484375,
+    "used_gb": 8.684356689453125,
+    "percent_used": 62.1,
+    "free_gb": 0.0902862548828125,
     "cached_gb": 0.0,
     "buffers_gb": 0.0
   },
@@ -35,39 +35,43 @@
   "results": [
     {
       "test_case": "Vue.js Task",
-      "success": false,
-      "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=300)",
-      "memory_before_gb": 6.6760101318359375,
-      "memory_after_gb": 1.298919677734375,
-      "memory_change_gb": -5.3770904541015625,
-      "routing_correct": false
+      "success": true,
+      "model_used": "DeepCoder Prime",
+      "model_id": "deepcoder:latest",
+      "response_time": 62.58213996887207,
+      "memory_before_gb": 6.824676513671875,
+      "memory_after_gb": 10.356613159179688,
+      "memory_change_gb": 3.5319366455078125,
+      "routing_correct": true
     },
     {
       "test_case": "Excel VBA Task",
-      "success": false,
-      "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=300)",
-      "memory_before_gb": 6.9306640625,
-      "memory_after_gb": 1.687286376953125,
-      "memory_change_gb": -5.243377685546875,
-      "routing_correct": false
+      "success": true,
+      "model_used": "Qwen Data Master",
+      "model_id": "qwen2.5:14b",
+      "response_time": 60.883031129837036,
+      "memory_before_gb": 9.922195434570312,
+      "memory_after_gb": 9.998779296875,
+      "memory_change_gb": 0.0765838623046875,
+      "routing_correct": true
     },
     {
       "test_case": "Laravel Task",
       "success": true,
       "model_used": "DeepSeek Legacy",
       "model_id": "deepseek-coder-v2:16b",
-      "response_time": 125.12553811073303,
-      "memory_before_gb": 6.5140380859375,
-      "memory_after_gb": 0.91973876953125,
-      "memory_change_gb": -5.59429931640625,
+      "response_time": 11.448149919509888,
+      "memory_before_gb": 9.526580810546875,
+      "memory_after_gb": 9.925933837890625,
+      "memory_change_gb": 0.39935302734375,
       "routing_correct": true
     }
   ],
   "summary": {
     "total_tests": 3,
-    "successful_tests": 1,
-    "success_rate": 0.3333333333333333,
-    "correct_routing": 1,
-    "routing_accuracy": 0.3333333333333333
+    "successful_tests": 3,
+    "success_rate": 1.0,
+    "correct_routing": 3,
+    "routing_accuracy": 1.0
   }
 }

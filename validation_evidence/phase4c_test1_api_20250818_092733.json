@@ -1,0 +1,78 @@
+{
+  "timestamp": "2025-08-18T09:27:33.998394",
+  "test_type": "api_endpoint_validation",
+  "phase": "4C",
+  "test_number": 1,
+  "passed_tests": 2,
+  "total_tests": 5,
+  "success_rate": 40.0,
+  "overall_success": false,
+  "detailed_results": {
+    "router_startup": {
+      "success": true,
+      "data": {
+        "status": "started",
+        "startup_time": 2,
+        "pid": 46463
+      }
+    },
+    "api_endpoints": {
+      "success": true,
+      "data": {
+        "/health": {
+          "success": true,
+          "status": 200,
+          "data_size": 117
+        },
+        "/api/team/status": {
+          "success": true,
+          "status": 200,
+          "data_size": 247
+        },
+        "/api/team/members": {
+          "success": true,
+          "status": 200,
+          "data_size": 2836
+        },
+        "/": {
+          "success": true,
+          "status": 200,
+          "data_size": 295
+        }
+      }
+    },
+    "chat_functionality": {
+      "success": false,
+      "data": {
+        "Simple Math": {
+          "success": true,
+          "model_used": "deepcoder:latest",
+          "member_name": "DeepCoder Prime",
+          "response_time": 30.293916940689087,
+          "response_length": 501,
+          "has_response": true
+        },
+        "Vue.js Question": {
+          "success": false,
+          "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=60)"
+        },
+        "Excel Question": {
+          "success": false,
+          "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=60)"
+        }
+      }
+    },
+    "team_status": {
+      "success": false,
+      "data": {
+        "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=10)"
+      }
+    },
+    "team_members": {
+      "success": false,
+      "data": {
+        "error": "HTTPConnectionPool(host='localhost', port=11435): Read timed out. (read timeout=10)"
+      }
+    }
+  }
+}

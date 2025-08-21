@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AI Team Router - Phase 4B Production with HTTP Fixes"""
+"""AI Team Router - Complete Implementation"""
 
 import os
 import sys
@@ -12,10 +12,7 @@ from dataclasses import dataclass
 from enum import Enum
 from datetime import datetime
 
-# PHASE 4B: Replace aiohttp with requests (proven HTTP fixes)
-import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
+import aiohttp
 import psutil
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
@@ -78,136 +75,6 @@ class TeamMember:
                 "vision": "vision" in self.model_id.lower()
             }
 
-class OptimizedHTTPClient:
-    """Optimized HTTP client for Ollama connections - Phase 4B Integration"""
-    
-    def __init__(self, base_url="http://localhost:11434", max_retries=2):
-        self.base_url = base_url
-        self.session = self._create_optimized_session(max_retries)
-        
-    def _create_optimized_session(self, max_retries):
-        """Create session with optimized connection settings"""
-        session = requests.Session()
-    
-        # Configure retry strategy (Phase 4A proven configuration)
-        retry_strategy = Retry(
-            total=max_retries,
-            status_forcelist=[429, 500, 502, 503, 504],
-            allowed_methods=["HEAD", "GET", "OPTIONS", "POST"],
-            backoff_factor=0.5  # 0.5s exponential backoff
-        )        
-        
-        # Configure HTTP adapter with connection pooling (Phase 4A validated)
-        adapter = HTTPAdapter(
-            max_retries=retry_strategy,
-            pool_connections=5,    # Phase 4A optimized
-            pool_maxsize=10,       # Phase 4A optimized
-            pool_block=False       # Non-blocking
-        )
-        
-        session.mount("http://", adapter)
-        session.mount("https://", adapter)
-        
-        # Set default headers (Phase 4A proven)
-        session.headers.update({
-            'Content-Type': 'application/json',
-            'Connection': 'keep-alive',
-            'User-Agent': 'AI-Team-Router-Phase4B/1.0'
-        })
-        
-        return session
-    
-    def generate(self, model_id, prompt, timeout=600, stream=False, options=None):
-        """Send generation request with Phase 4A proven error handling"""
-        
-        payload = {
-            "model": model_id,
-            "prompt": prompt,
-            "stream": stream,
-            "options": options or {}
-        }
-        
-        start_time = time.time()
-        
-        try:
-            logger.info(f"HTTP Request: {model_id} (timeout: {timeout}s)")
-            
-            # Use requests instead of aiohttp (Phase 4A proven fix)
-            response = self.session.post(
-                f"{self.base_url}/api/generate",
-                json=payload,
-                timeout=timeout,
-                stream=False
-            )
-            
-            connection_time = time.time() - start_time
-            logger.info(f"HTTP response received in {connection_time:.1f}s")
-            
-            if response.status_code == 200:
-                try:
-                    result = response.json()
-                    total_time = time.time() - start_time
-                    logger.info(f"✅ Request completed in {total_time:.1f}s")
-                    return {
-                        "success": True,
-                        "response": result.get("response", ""),
-                        "response_time": total_time,
-                        "connection_time": connection_time
-                    }
-                except json.JSONDecodeError as e:
-                    logger.error(f"JSON decode error: {e}")
-                    return {
-                        "success": False,
-                        "error": f"JSON decode error: {e}",
-                        "response_time": time.time() - start_time
-                    }
-            else:
-                logger.error(f"HTTP error: {response.status_code} - {response.text}")
-                return {
-                    "success": False,
-                    "error": f"HTTP {response.status_code}: {response.text}",
-                    "response_time": time.time() - start_time
-                }
-                
-        except requests.exceptions.Timeout as e:
-            total_time = time.time() - start_time
-            logger.error(f"Request timeout after {total_time:.1f}s: {e}")
-            return {
-                "success": False,
-                "error": f"Timeout after {total_time:.1f}s: {e}",
-                "response_time": total_time
-            }
-        except requests.exceptions.ConnectionError as e:
-            total_time = time.time() - start_time
-            logger.error(f"Connection error after {total_time:.1f}s: {e}")
-            return {
-                "success": False,
-                "error": f"Connection error: {e}",
-                "response_time": total_time
-            }
-        except Exception as e:
-            total_time = time.time() - start_time
-            logger.error(f"Unexpected error after {total_time:.1f}s: {e}")
-            return {
-                "success": False,
-                "error": f"Unexpected error: {e}",
-                "response_time": total_time
-            }
-    
-    def unload(self, model_id, timeout=30):
-        """Send unload request"""
-        return self.generate(
-            model_id=model_id,
-            prompt="",
-            timeout=timeout,
-            options={"keep_alive": 0}
-        )
-    
-    def close(self):
-        """Close the session"""
-        if self.session:
-            self.session.close()
-
 class AITeamRouter:
     def __init__(self):
         self.active_member = None
@@ -216,12 +83,7 @@ class AITeamRouter:
         self.performance_metrics = {}
         self.emergency_mode = False
         self.min_system_memory_gb = 2.0
-        
-        # PHASE 4B: Initialize OptimizedHTTPClient
-        self.ollama_client = OptimizedHTTPClient(OLLAMA_API_BASE)
-        
         logger.info(f"Router initialized with {len(self.team_members)} members")
-        logger.info("🚀 Phase 4B: Using OptimizedHTTPClient with proven HTTP fixes")
     
     def _initialize_team(self):
         return {
@@ -364,19 +226,19 @@ class AITeamRouter:
         # Ensure we don't return negative values
         return max(0.1, available)
     
-    def _unload_model(self, model_id):
-        """Phase 4B: Synchronous unload with proven HTTP client"""
+    async def _unload_model(self, model_id):
+        """Data-driven unload with adaptive timing measurement"""
         try:
             unload_start_time = time.time()
             logger.info(f"Unloading: {model_id}")
             mem_before = psutil.virtual_memory().available
             
-            # PHASE 4B: Use OptimizedHTTPClient instead of aiohttp
-            result = self.ollama_client.unload(model_id)
-            
-            if not result["success"]:
-                logger.warning(f"Unload request failed: {result.get('error', 'unknown')}")
-                return False
+            # Send unload command
+            async with aiohttp.ClientSession() as session:
+                await session.post(
+                    f"{OLLAMA_API_BASE}/api/generate",
+                    json={"model": model_id, "keep_alive": 0}
+                )
             
             # DATA-DRIVEN: Monitor memory release over time
             if IS_M3_PRO:
@@ -389,7 +251,7 @@ class AITeamRouter:
                 elapsed = 0.0
                 
                 while elapsed < max_wait_time:
-                    time.sleep(check_interval)  # Synchronous sleep
+                    await asyncio.sleep(check_interval)
                     elapsed += check_interval
                     
                     current_mem = psutil.virtual_memory().available
@@ -410,11 +272,6 @@ class AITeamRouter:
                         
                         # Log timing data for future optimization
                         logger.info(f"📊 TIMING DATA: {model_id} took {elapsed:.1f}s to release {mem_released:.2f}GB")
-                        
-                        # CRITICAL FIX: Memory stabilization wait (Phase 4A proven value)
-                        logger.info("🔄 MEMORY STABILIZATION: Waiting 10s for complete memory release...")
-                        time.sleep(10)
-                        
                         return True
                 
                 # If we reach here, unload was insufficient - try force reset
@@ -426,10 +283,10 @@ class AITeamRouter:
                 
                 # Force context reset as last resort
                 logger.info("🔄 Attempting force context reset...")
-                self._force_context_reset(model_id)
+                await self._force_context_reset(model_id)
                 
                 # Final verification
-                time.sleep(2)
+                await asyncio.sleep(2)
                 ultimate_mem = psutil.virtual_memory().available
                 ultimate_released = (ultimate_mem - mem_before) / (1024**3)
                 total_unload_time = time.time() - unload_start_time
@@ -438,32 +295,36 @@ class AITeamRouter:
                 return ultimate_released >= 0.2  # Accept minimal release
             else:
                 # Non-M3 systems - simple wait
-                time.sleep(3)
+                await asyncio.sleep(3)
                 return True
                 
         except Exception as e:
             logger.error(f"Unload error: {e}")
             return False
     
-    def _force_context_reset(self, model_id):
-        """Force full context reset for stubborn models - Phase 4B version"""
+    async def _force_context_reset(self, model_id):
+        """Force full context reset for stubborn models"""
         try:
-            # PHASE 4B: Use OptimizedHTTPClient for context reset
-            result = self.ollama_client.generate(
-                model_id=model_id,
-                prompt="",
-                timeout=10,
-                options={
+            unload_payload = {
+                "model": model_id,
+                "prompt": "",
+                "stream": False,
+                "options": {
                     "num_ctx": 1,
                     "num_gpu": 0,
                     "num_threads": 1
                 }
-            )
+            }
             
-            if result["success"]:
-                logger.info("🔄 Force context reset completed")
-            else:
-                logger.warning(f"Force context reset failed: {result.get('error', 'unknown')}")
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    f"{OLLAMA_API_BASE}/api/generate",
+                    json=unload_payload,
+                    timeout=aiohttp.ClientTimeout(total=10)
+                ) as response:
+                    await response.text()
+            
+            logger.info("🔄 Force context reset completed")
         except Exception as e:
             logger.warning(f"Force context reset failed: {e}")
     
@@ -526,8 +387,6 @@ class AITeamRouter:
                     return ["deepcoder_primary", "deepseek_legacy"], ["mistral_versatile", "gemma_medium"], ["gemma_tiny"]
             elif domain == "enterprise":
                 return ["qwen_analyst"], ["granite_enterprise", "mistral_versatile", "gemma_medium"], ["gemma_tiny"]
-            elif domain == "data": 
-                return ["qwen_analyst"], ["deepcoder_primary", "mistral_versatile"], ["gemma_tiny"]
             elif domain == "visual":
                 return ["granite_vision"], ["gemma_medium"], ["gemma_tiny"]
             else:
@@ -547,13 +406,7 @@ class AITeamRouter:
                         return member_id, member
                     else:
                         memory_deficit = required_memory - available_memory
-                        # AGGRESSIVE EDGE MODE: Allow larger deficits for BEST models only
-                        # Special priority for Vue/React tasks to get DeepCoder
-                        is_react_vue = "react" in requirements.get("prompt", "").lower() or "vue" in requirements.get("prompt", "").lower()
-                        if (group_name == "BEST" and memory_deficit < 6.0) or (is_react_vue and member_id == "deepcoder_primary" and memory_deficit < 8.0):
-                            logger.warning(f"AGGRESSIVE EDGE: Selected {member_id} with {memory_deficit:.1f}GB deficit for optimal routing")
-                            return member_id, member
-                        elif MEMORY_EDGE_MODE and memory_deficit < MEMORY_EDGE_LIMIT_GB:
+                        if MEMORY_EDGE_MODE and memory_deficit < MEMORY_EDGE_LIMIT_GB:  # Allow up to 4GB over-edge
                             logger.warning(f"EDGE MODE: Selected {member_id} with {memory_deficit:.1f}GB deficit - expect 1-3 tokens/sec")
                             return member_id, member
                         else:
@@ -569,8 +422,8 @@ class AITeamRouter:
         if mem.percent > 98:
             logger.critical(f"CRITICAL MEMORY PRESSURE: {mem.percent}%")
             if self.active_member:
-                # Emergency unload - synchronous in Phase 4B
-                self._unload_model(self.team_members[self.active_member].model_id)
+                # Emergency unload - fire and forget
+                asyncio.create_task(self._unload_model(self.team_members[self.active_member].model_id))
                 self.active_member = None
             return "gemma_tiny", self.team_members["gemma_tiny"]
         return None
@@ -590,73 +443,48 @@ class AITeamRouter:
                 member_id, member = self.select_team_member(requirements)
     
                 if self.active_member and self.active_member != member_id:
-                    self._unload_model(self.team_members[self.active_member].model_id)
-
+                    await self._unload_model(self.team_members[self.active_member].model_id)
+    
             self.active_member = member_id
             
-            # PHASE 4B: Intelligent timeout based on model size (Phase 4A proven values)
+            # Intelligent timeout based on model size (prioritize quality over speed)
             model_timeout = 60  # Base timeout
             if member.memory_gb >= 8.0:  # Large models (DeepCoder, Qwen, DeepSeek)
-                model_timeout = 300  # 5 minutes - Phase 4A proven successful
+                model_timeout = 300  # 5 minutes for 9GB models
             elif member.memory_gb >= 4.0:  # Medium models
-                model_timeout = 240  # 4 minutes for medium models
-            else:
-                model_timeout = 180  # 3 minutes for small models
+                model_timeout = 180  # 3 minutes for 4-5GB models
             
             logger.info(f"Using {model_timeout}s timeout for {member.memory_gb}GB model")
             
-            # PHASE 4B: Use OptimizedHTTPClient instead of aiohttp
-            result = self.ollama_client.generate(
-                model_id=member.model_id,
-                prompt=prompt,
-                timeout=model_timeout,
-                options={
-                    "temperature": context.get("temperature", 0.7),
-                    "num_ctx": 2048  # Phase 4A proven value - was 32768 (too large!)
-                }
-            )
-            
-            if result["success"]:
-                elapsed = time.time() - start_time
-                
-                # CRITICAL FIX: Unload model after each request to free memory for next request
-                logger.info(f"🧹 REQUEST COMPLETE: Unloading {member.model_id} to free memory for next request")
-                self._unload_model(member.model_id)
-                self.active_member = None
-                
-                return {
-                    "response": result["response"],
-                    "metadata": {
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    f"{OLLAMA_API_BASE}/api/generate",
+                    json={
                         "model": member.model_id,
-                        "member": member.name,
-                        "elapsed_time": elapsed,
-                        "requirements": requirements,
-                        "http_client": "OptimizedHTTPClient",
-                        "phase": "4B"
-                    }
-                }
-            else:
-                logger.error(f"Generation failed: {result.get('error', 'unknown')}")
-                return {
-                    "response": "Error occurred during generation", 
-                    "metadata": {
-                        "error": result.get('error', 'unknown'),
-                        "model": member.model_id,
-                        "member": member.name,
-                        "http_client": "OptimizedHTTPClient",
-                        "phase": "4B"
-                    }
-                }
+                        "prompt": prompt,
+                        "stream": False,
+                        "options": {
+                            "temperature": context.get("temperature", 0.7),
+                            "num_ctx": min(member.context_tokens, 32768)
+                        }
+                    },
+                    timeout=aiohttp.ClientTimeout(total=model_timeout)
+                ) as response:
+                    if response.status == 200:
+                        result = await response.json()
+                        elapsed = time.time() - start_time
+                        return {
+                            "response": result.get("response", ""),
+                            "metadata": {
+                                "model": member.model_id,
+                                "member": member.name,
+                                "elapsed_time": elapsed,
+                                "requirements": requirements
+                            }
+                        }
         except Exception as e:
-            logger.error(f"Router error: {e}")
-            return {
-                "response": "Router error occurred", 
-                "metadata": {
-                    "error": str(e),
-                    "http_client": "OptimizedHTTPClient",
-                    "phase": "4B"
-                }
-            }
+            logger.error(f"Error: {e}")
+            return {"response": "Error occurred", "metadata": {"error": str(e)}}
     
     def get_status(self):
         mem = psutil.virtual_memory()
@@ -668,20 +496,11 @@ class AITeamRouter:
                 "total_memory_gb": TOTAL_MEMORY_GB,
                 "available_memory_gb": self._get_available_memory_gb(),
                 "memory_pressure": mem.percent
-            },
-            "phase": "4B",
-            "http_client": "OptimizedHTTPClient",
-            "version": "1.0.0-phase4b"
+            }
         }
-    
-    def close(self):
-        """Clean shutdown"""
-        if hasattr(self, 'ollama_client'):
-            self.ollama_client.close()
-        logger.info("Router shutdown complete")
 
 # FastAPI app
-app = FastAPI(title="AI Team Router Phase 4B", version="1.0.0-phase4b")
+app = FastAPI(title="AI Team Router", version="1.0.0")
 router = AITeamRouter()
 
 class ChatRequest(BaseModel):
@@ -715,21 +534,14 @@ async def get_members():
 
 @app.get("/health")
 async def health_check():
-    return {
-        "status": "healthy", 
-        "timestamp": datetime.now().isoformat(),
-        "phase": "4B",
-        "http_client": "OptimizedHTTPClient"
-    }
+    return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
 @app.get("/")
 async def root():
     return {
-        "name": "AI Team Router Phase 4B",
-        "version": "1.0.0-phase4b",
+        "name": "AI Team Router",
+        "version": "1.0.0",
         "models": len(router.team_members),
-        "phase": "4B - Production with HTTP Fixes",
-        "http_client": "OptimizedHTTPClient",
         "endpoints": {
             "chat": "POST /api/chat",
             "status": "GET /api/team/status",
@@ -738,18 +550,6 @@ async def root():
         }
     }
 
-# Cleanup on shutdown
-@app.on_event("shutdown")
-async def shutdown_event():
-    router.close()
-
 if __name__ == "__main__":
-    logger.info(f"🚀 Starting AI Team Router Phase 4B on port 11435...")
-    logger.info(f"📊 Phase 4A Results: 100% routing accuracy achieved")
-    logger.info(f"🔧 Phase 4B: Production deployment with OptimizedHTTPClient")
-    try:
-        uvicorn.run(app, host="0.0.0.0", port=11435)
-    except KeyboardInterrupt:
-        logger.info("Router shutdown requested")
-    finally:
-        router.close()
+    logger.info(f"Starting AI Team Router on port 11435...")
+    uvicorn.run(app, host="0.0.0.0", port=11435)

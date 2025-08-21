@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-08-20T16:45:26.511746",
+  "router_version": "phase4b",
+  "tests_passed": 3,
+  "total_tests": 3,
+  "memory_recovery_rate": 2,
+  "detailed_results": [
+    {
+      "test": "Vue.js",
+      "success": true,
+      "model": "deepcoder:latest",
+      "time": 64.41842198371887,
+      "memory_before": 8.485076904296875,
+      "memory_after": 10.091796875,
+      "memory_recovered": true
+    },
+    {
+      "test": "Excel",
+      "success": true,
+      "model": "qwen2.5:14b",
+      "time": 62.716233015060425,
+      "memory_before": 10.092453002929688,
+      "memory_after": 10.223419189453125,
+      "memory_recovered": true
+    },
+    {
+      "test": "Simple",
+      "success": true,
+      "model": "deepcoder:latest",
+      "time": 28.18836998939514,
+      "memory_before": 10.215850830078125,
+      "memory_after": 9.992752075195312,
+      "memory_recovered": false
+    }
+  ]
+}
