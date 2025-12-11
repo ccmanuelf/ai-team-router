@@ -67,7 +67,7 @@ Automatically selects the optimal model based on task analysis:
 - Emergency fallback mechanisms
 
 ### 🛠️ Professional Tool Integration
-- **Web Search**: DuckDuckGo, Tavily, Google
+- **Web Search**: DuckDuckGo, Tavily, Google, Serper, Brave (all providers working)
 - **Excel Optimizer**: VBA/Pandas code generation for 150k+ rows
 - **Code Executor**: Sandboxed Python/JavaScript execution
 - **File Analyzer**: PDF/Excel processing
