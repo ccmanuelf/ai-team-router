@@ -99,7 +99,9 @@ async def _web_search_with_fallback(query: str) -> str:
 
 async def _search_single_provider(provider: str, query: str) -> str:
     """Search with a specific provider"""
-    if provider == "serper":
+    if provider == "duckduckgo":
+        return await _duckduckgo_search(query)
+    elif provider == "serper":
         return await _serper_search(query)
     elif provider == "tavily":
         return await _tavily_search(query)
