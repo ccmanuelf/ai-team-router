@@ -43,3 +43,6 @@ validation_evidence/*validation*.json
 temp_script.sh
 *_backup.py
 
+# Unrelated files
+inventory-reconciliation-tabs-corrected.html
+
